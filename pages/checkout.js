@@ -1,7 +1,7 @@
 import { useState, useEffect, CSSProperties } from "react";
 import link from "next";
 import { useForm } from "react-hook-form";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Layout/Navbar";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import Image from "next/image";
@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import MoonLoader from "react-spinners/MoonLoader";
 import { redirect } from "next/dist/server/api-utils";
 import Link from "next/link";
+import Footer from "../components/Layout/Footer";
 
 const override = {
   display: "block",
@@ -229,19 +230,6 @@ const checkout = ({
 
   return (
     <div className="relative">
-      {/* {pending ? (
-        <div className=" flex justify-center items-center absolute bg-white w-full ">
-          <MoonLoader
-            color={"#36d7b7"}
-            loading={loading}
-            size={150}
-            aria-label="Loading Spinner"
-            data-testid="loader"
-          />
-        </div>
-      ) : (
-        ""
-      )} */}
       <Navbar carrito={carrito} eliminarProducto={eliminarProducto} />
 
       <div className="w-full mx-auto max-w-[1360px] py-10 flex">
@@ -581,18 +569,20 @@ const checkout = ({
       </div>
       <div>
         {pending ? (
-          <Modal open={open} className="p-6 " center>
-            <div className="my-6 w-[300px]">
-              <h2>Generando orden...</h2>
-              <Link href="/menu" className="text-center mx-auto text-green-600">
-                Regresar al menu
-              </Link>
-            </div>
+          <Modal open={open} className="p-6 w-full h-screen absolute" center>
+            <MoonLoader
+              color={"#36d7b7"}
+              loading={true}
+              size={150}
+              aria-label="Loading Spinner"
+              data-testid="loader"
+            />
           </Modal>
         ) : (
           ""
         )}
       </div>
+      <Footer />
     </div>
   );
 };

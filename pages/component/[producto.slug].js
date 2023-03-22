@@ -2,7 +2,8 @@ import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { obtenerProductoPagina } from "../../utils/wooCommerceApi";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/Layout/Navbar";
+import Footer from "../../components/Layout/Footer";
 
 const producto = ({ producto, agregarCarrito, eliminarProducto, carrito }) => {
   const [cantidad, setCantidad] = useState(1);
@@ -143,6 +144,7 @@ const producto = ({ producto, agregarCarrito, eliminarProducto, carrito }) => {
       </div>
 
       <ToastContainer autoClose={2000} />
+      <Footer />
     </>
   );
 };

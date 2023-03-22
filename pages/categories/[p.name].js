@@ -1,5 +1,6 @@
 import Link from "next/link";
-import Navbar from "../../components/Navbar";
+import Footer from "../../components/Layout/Footer";
+import Navbar from "../../components/Layout/Navbar";
 import { obtenerProductos } from "../../utils/wooCommerceApi";
 
 const name = ({ productos, carrito, eliminarProducto }) => {
@@ -48,6 +49,7 @@ const name = ({ productos, carrito, eliminarProducto }) => {
           ))}
         </div>
       </div>
+      <Footer />
     </>
   );
 };

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import logo from "../public/sofia.png";
+import logo from "../../public/sofia.png";
 
 const Navbar = ({ carrito, eliminarProducto }) => {
   const [cart, setCart] = useState(false);
@@ -58,83 +58,88 @@ const Navbar = ({ carrito, eliminarProducto }) => {
                 />
               </svg>
             </div>
-
-            <table className="w-full mb-4">
-              <thead>
-                <tr>
-                  <th>Producto</th>
-                  <th>Cantidad</th>
-                  <th>Precio</th>
-                </tr>
-              </thead>
-              <tbody className="">
-                {carrito.map((p) => (
-                  <tr key={p.id} className="text-center">
-                    <td className="flex justify-center items-center">
-                      <Image
-                        src={p.imagen}
-                        width={90}
-                        height={90}
-                        alt={p.name}
-                        className="relative"
-                      />
-                      <svg
-                        width={10}
-                        className="cursor-pointer absolute right-3 fill-red-500"
-                        onClick={() => eliminarProducto(p.id)}
-                        viewBox="0 0 1024 1024"
-                        version="1.1"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M818.1 872.1c-15.4 0-30.7-5.9-42.4-17.6l-613-612.9c-23.4-23.4-23.4-61.4 0-84.9 23.4-23.4 61.4-23.4 84.9 0l612.9 612.9c23.4 23.4 23.4 61.4 0 84.9a59.914 59.914 0 0 1-42.4 17.6z"
-                          fill=""
-                        />
-                        <path
-                          d="M205.1 872.1c-15.4 0-30.7-5.9-42.4-17.6-23.4-23.4-23.4-61.4 0-84.9l612.9-612.9c23.4-23.4 61.4-23.4 84.9 0 23.4 23.4 23.4 61.4 0 84.9L247.6 854.5c-11.7 11.7-27.1 17.6-42.5 17.6z"
-                          fill=""
-                        />
-                        <path
-                          d="M818.1 872.1c-15.4 0-30.7-5.9-42.4-17.6l-613-612.9c-23.4-23.4-23.4-61.4 0-84.9 23.4-23.4 61.4-23.4 84.9 0l612.9 612.9c23.4 23.4 23.4 61.4 0 84.9a59.914 59.914 0 0 1-42.4 17.6z"
-                          fill=""
-                        />
-                        <path
-                          d="M205.1 872.1c-15.4 0-30.7-5.9-42.4-17.6-23.4-23.4-23.4-61.4 0-84.9l612.9-612.9c23.4-23.4 61.4-23.4 84.9 0 23.4 23.4 23.4 61.4 0 84.9L247.6 854.5c-11.7 11.7-27.1 17.6-42.5 17.6z"
-                          fill=""
-                        />
-                        <path
-                          d="M818.1 872.1c-15.4 0-30.7-5.9-42.4-17.6l-613-612.9c-23.4-23.4-23.4-61.4 0-84.9 23.4-23.4 61.4-23.4 84.9 0l612.9 612.9c23.4 23.4 23.4 61.4 0 84.9a59.914 59.914 0 0 1-42.4 17.6z"
-                          fill=""
-                        />
-                        <path
-                          d="M205.1 872.1c-15.4 0-30.7-5.9-42.4-17.6-23.4-23.4-23.4-61.4 0-84.9l612.9-612.9c23.4-23.4 61.4-23.4 84.9 0 23.4 23.4 23.4 61.4 0 84.9L247.6 854.5c-11.7 11.7-27.1 17.6-42.5 17.6z"
-                          fill=""
-                        />
-                        <path
-                          d="M818.1 872.1c-15.4 0-30.7-5.9-42.4-17.6l-613-612.9c-23.4-23.4-23.4-61.4 0-84.9 23.4-23.4 61.4-23.4 84.9 0l612.9 612.9c23.4 23.4 23.4 61.4 0 84.9a59.914 59.914 0 0 1-42.4 17.6z"
-                          fill=""
-                        />
-                        <path
-                          d="M205.1 872.1c-15.4 0-30.7-5.9-42.4-17.6-23.4-23.4-23.4-61.4 0-84.9l612.9-612.9c23.4-23.4 61.4-23.4 84.9 0 23.4 23.4 23.4 61.4 0 84.9L247.6 854.5c-11.7 11.7-27.1 17.6-42.5 17.6z"
-                          fill=""
-                        />
-                      </svg>
-                    </td>
-                    <td>{p.cantidad}</td>
-                    <td>{p.price}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <div className="w-full">
-              <h3 className="font-philo mb-4">Subtotal:</h3>
-              <Link
-                href="/carrito"
-                className="bg-[#052617] text-white font-philo block text-center py-2"
-              >
-                Go to Cart
-              </Link>
-            </div>
+            {carrito.length === 0 ? (
+              <p>No hay productos en el carrito</p>
+            ) : (
+              <>
+                <table className="w-full mb-4">
+                  <thead>
+                    <tr>
+                      <th>Producto</th>
+                      <th>Cantidad</th>
+                      <th>Precio</th>
+                    </tr>
+                  </thead>
+                  <tbody className="">
+                    {carrito.map((p) => (
+                      <tr key={p.id} className="text-center">
+                        <td className="flex justify-center items-center">
+                          <Image
+                            src={p.imagen}
+                            width={90}
+                            height={90}
+                            alt={p.name}
+                            className="relative"
+                          />
+                          <svg
+                            width={10}
+                            className="cursor-pointer absolute right-3 fill-red-500"
+                            onClick={() => eliminarProducto(p.id)}
+                            viewBox="0 0 1024 1024"
+                            version="1.1"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M818.1 872.1c-15.4 0-30.7-5.9-42.4-17.6l-613-612.9c-23.4-23.4-23.4-61.4 0-84.9 23.4-23.4 61.4-23.4 84.9 0l612.9 612.9c23.4 23.4 23.4 61.4 0 84.9a59.914 59.914 0 0 1-42.4 17.6z"
+                              fill=""
+                            />
+                            <path
+                              d="M205.1 872.1c-15.4 0-30.7-5.9-42.4-17.6-23.4-23.4-23.4-61.4 0-84.9l612.9-612.9c23.4-23.4 61.4-23.4 84.9 0 23.4 23.4 23.4 61.4 0 84.9L247.6 854.5c-11.7 11.7-27.1 17.6-42.5 17.6z"
+                              fill=""
+                            />
+                            <path
+                              d="M818.1 872.1c-15.4 0-30.7-5.9-42.4-17.6l-613-612.9c-23.4-23.4-23.4-61.4 0-84.9 23.4-23.4 61.4-23.4 84.9 0l612.9 612.9c23.4 23.4 23.4 61.4 0 84.9a59.914 59.914 0 0 1-42.4 17.6z"
+                              fill=""
+                            />
+                            <path
+                              d="M205.1 872.1c-15.4 0-30.7-5.9-42.4-17.6-23.4-23.4-23.4-61.4 0-84.9l612.9-612.9c23.4-23.4 61.4-23.4 84.9 0 23.4 23.4 23.4 61.4 0 84.9L247.6 854.5c-11.7 11.7-27.1 17.6-42.5 17.6z"
+                              fill=""
+                            />
+                            <path
+                              d="M818.1 872.1c-15.4 0-30.7-5.9-42.4-17.6l-613-612.9c-23.4-23.4-23.4-61.4 0-84.9 23.4-23.4 61.4-23.4 84.9 0l612.9 612.9c23.4 23.4 23.4 61.4 0 84.9a59.914 59.914 0 0 1-42.4 17.6z"
+                              fill=""
+                            />
+                            <path
+                              d="M205.1 872.1c-15.4 0-30.7-5.9-42.4-17.6-23.4-23.4-23.4-61.4 0-84.9l612.9-612.9c23.4-23.4 61.4-23.4 84.9 0 23.4 23.4 23.4 61.4 0 84.9L247.6 854.5c-11.7 11.7-27.1 17.6-42.5 17.6z"
+                              fill=""
+                            />
+                            <path
+                              d="M818.1 872.1c-15.4 0-30.7-5.9-42.4-17.6l-613-612.9c-23.4-23.4-23.4-61.4 0-84.9 23.4-23.4 61.4-23.4 84.9 0l612.9 612.9c23.4 23.4 23.4 61.4 0 84.9a59.914 59.914 0 0 1-42.4 17.6z"
+                              fill=""
+                            />
+                            <path
+                              d="M205.1 872.1c-15.4 0-30.7-5.9-42.4-17.6-23.4-23.4-23.4-61.4 0-84.9l612.9-612.9c23.4-23.4 61.4-23.4 84.9 0 23.4 23.4 23.4 61.4 0 84.9L247.6 854.5c-11.7 11.7-27.1 17.6-42.5 17.6z"
+                              fill=""
+                            />
+                          </svg>
+                        </td>
+                        <td>{p.cantidad}</td>
+                        <td>{p.price}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <div className="w-full">
+                  <h3 className="font-philo mb-4">Subtotal:</h3>
+                  <Link
+                    href="/carrito"
+                    className="bg-[#052617] text-white font-philo block text-center py-2"
+                  >
+                    Go to Cart
+                  </Link>
+                </div>
+              </>
+            )}
           </div>
         </div>
       ) : (
@@ -153,10 +158,13 @@ const Navbar = ({ carrito, eliminarProducto }) => {
                 <Link href="/">Home</Link>
               </li>
               <li className="font-philo text-lg hover:text-[#D9BF73] duration-300">
-                <Link href="/contact">Contact</Link>
+                <Link href="/contact">About us </Link>
               </li>
               <li className="font-philo text-lg hover:text-[#D9BF73] duration-300">
                 <Link href="/menu">Menu</Link>
+              </li>
+              <li className="font-philo text-lg hover:text-[#D9BF73] duration-300">
+                <Link href="/menu">Contact us</Link>
               </li>
             </ul>
           </nav>

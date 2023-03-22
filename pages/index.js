@@ -1,9 +1,10 @@
-import Navbar from "../components/Navbar";
+import Navbar from "../../components/Layout/Navbar";
 import Image from "next/image";
 import img1 from "../public/food1.jpg";
 import img2 from "../public/food2.jpg";
 import img3 from "../public/food3.jpg";
 import res from "../public/res2.jpg";
+import Footer from "../components/Layout/Footer";
 
 export default function Home({ carrito, eliminarProducto }) {
   return (
@@ -139,12 +140,18 @@ export default function Home({ carrito, eliminarProducto }) {
           Find us
         </h2>
         <div className="flex py-4">
-          <div className="w-1/2 px-[50px]">
-            <h2 className="font-medium">Sofia's Restaurant</h2>
-            <h2>Business Hours</h2>
-            <p>Mon - Sun: 11:00 AM - 10:00 PM</p>
-            <h2>Carryout Hours</h2>
-            <p>Mon - Sun: 11:00 AM - 9:45 PM</p>
+          <div className="w-1/2 py-8 px-[50px] flex flex-col justify-start space-y-4">
+            <div>
+              <h2 className="font-medium mb-8 font-philo text-xl">
+                Sofia's Restaurant
+              </h2>
+              <h2 className="font-philo">Business Hours</h2>
+              <p>Mon - Sun: 11:00 AM - 10:00 PM</p>
+            </div>
+            <div>
+              <h2>Carryout Hours</h2>
+              <p>Mon - Sun: 11:00 AM - 9:45 PM</p>
+            </div>
           </div>
           <iframe
             className="w-1/2"
@@ -155,6 +162,7 @@ export default function Home({ carrito, eliminarProducto }) {
           ></iframe>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
