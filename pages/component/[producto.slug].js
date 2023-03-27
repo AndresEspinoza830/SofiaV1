@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { obtenerProductoPagina } from "../../utils/wooCommerceApi";
 import Navbar from "../../components/Layout/Navbar";
 import Footer from "../../components/Layout/Footer";
+import pors from "../../public/default.png";
 
 const producto = ({ producto, agregarCarrito, eliminarProducto, carrito }) => {
   const [cantidad, setCantidad] = useState(1);
@@ -58,7 +59,7 @@ const producto = ({ producto, agregarCarrito, eliminarProducto, carrito }) => {
                   fill=""
                 />
               </svg>
-              <p className="font-medium">Atrás</p>
+              <p className="font-medium">Back</p>
             </a>
             <h2 className="text-[#052617] text-3xl font-extrabold mb-6 font-philo">
               {product.name}
@@ -66,31 +67,16 @@ const producto = ({ producto, agregarCarrito, eliminarProducto, carrito }) => {
           </div>
           <div className="flex flex-col-reverse md:flex-row w-full">
             <form className="w-full md:w-3/5 mr-2" onSubmit={handleCarrito}>
-              <h3 className="font-philo font-bold text-xl mb-2">Descripcion</h3>
+              <h3 className="font-philo font-bold text-xl mb-2">Description</h3>
               <p className="font-philo text-xl text-[#555555] mb-5">
                 {product.description}
               </p>
-              <h3 className="font-philo font-bold text-xl mb-4">
-                Observaciones del producto
-              </h3>
-              <div className="flex flex-col mb-5">
-                <input
-                  type="text"
-                  id="mensaje"
-                  className="bg-transparent border outline-offset-0 rounded-lg text-black px-8 py-3 focus:outline-none"
-                />
-                <label
-                  htmlFor="mensaje"
-                  className="font-philo font-light text-sm"
-                >
-                  Máximo 30 caracteres
-                </label>
-              </div>
+
               <div className="flex items-center mb-5">
-                <h3 className="font-philo font-bold text-xl mb-2">Cantidad</h3>
+                <h3 className="font-philo font-bold text-xl mb-2">Quantity</h3>
                 <div className="flex flex-row h-10 rounded-lg relative bg-transparent ml-4">
                   <select
-                    className="w-24 text-center"
+                    className="w-24 text-center bg-gray-200 shadow-md shadow-inherit"
                     value={cantidad}
                     onChange={(e) => setCantidad(Number(e.target.value))}
                   >
@@ -108,20 +94,37 @@ const producto = ({ producto, agregarCarrito, eliminarProducto, carrito }) => {
                   </select>
                 </div>
               </div>
-              <div>
-                <h3 className="font-philo font-bold text-xl mb-5">Opciones:</h3>
+              <h3 className="font-philo font-bold text-xl mb-4">
+                NOTES FOR THER KITCHEN
+              </h3>
+              <div className="flex flex-col mb-5">
+                <input
+                  type="text"
+                  id="mensaje"
+                  className="bg-transparent border border-gray-500 h-[100px] outline-offset-0 rounded-lg text-black px-8 py-3 focus:outline-none"
+                />
+                {/* <label
+                  htmlFor="mensaje"
+                  className="font-philo font-light text-sm"
+                >
+                  Máximo 30 caracteres
+                </label> */}
               </div>
               <h3 className="font-philo font-extrabold text-4xl mb-8 text-[#052617]">
                 ${product.price}
               </h3>
               <input
                 className="bg-[#052617] hover:bg-[#0c5836] transition duration-500 hover:shadow-md text-[#D9BF73] w-full py-3 rounded-lg font-philo text-xl font-bold text-center cursor-pointer"
-                value="AGREGAR AL CARRITO"
+                value="ADD TO CART"
                 type="submit"
               />
             </form>
-            <div className="w-full md:w-2/5  mb-4 bg-black">
-              {/* <img src={product.Images} className="w-full m-0 h-auto rounded-md " objecfit="contain" alt='imagen' /> */}
+            <div>
+              <img
+                alt="Placeholder"
+                className="block h-auto w-full"
+                src={product?.images[0]?.src}
+              ></img>
             </div>
           </div>
         </div>

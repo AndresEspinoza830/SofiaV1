@@ -7,6 +7,7 @@ const name = ({ productos, carrito, eliminarProducto }) => {
   productos.map(
     (p) => (p.description = p.description.replace(/(<([^>]+)>)/gi, ""))
   );
+  console.log(productos);
   return (
     <>
       <Navbar carrito={carrito} eliminarProducto={eliminarProducto} />
@@ -15,21 +16,21 @@ const name = ({ productos, carrito, eliminarProducto }) => {
           {productos.map((producto) => (
             <div
               key={producto.id}
-              className="my-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3 min-h-[420px] flex flex-col justify-between rounded-lg"
+              className="my-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3 min-h-[400px] flex flex-col justify-between rounded-lg"
             >
-              <img
-                alt="Placeholder"
-                className="block h-auto w-full"
-                src="/prueba.jpg"
-              ></img>
               <div className="px-2">
-                <h2 className="font-philo text-[#052617] uppercase">
+                <img
+                  alt="Placeholder"
+                  className="block h-auto w-full"
+                  src={producto?.images[0]?.src}
+                ></img>
+                <h2 className="my-2 font-philo text-[#052617] uppercase">
                   {producto.name}
                 </h2>
                 <h2 className="text-xl text-[#052617] font-bold">
                   ${producto.price}
                 </h2>
-                <p className="font-normal my-2">
+                <p className="font-normal my-2 my-custom-style ">
                   {producto.description || (
                     <p>
                       Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -37,14 +38,14 @@ const name = ({ productos, carrito, eliminarProducto }) => {
                     </p>
                   )}
                 </p>
-                {/* <h3>{producto.slug}</h3> */}
-                <Link
-                  href={`/component/${producto.slug}`}
-                  className="block font-philo text-center bg-[#052617] w-full text-[#D9BF73] py-3 rounded-md hover:bg-[#0c5836] duration-1000 uppercase mb-4"
-                >
-                  Comprar
-                </Link>
               </div>
+
+              <Link
+                href={`/component/${producto.slug}`}
+                className="self-end font-philo text-center bg-[#052617] w-full text-[#D9BF73] py-3 rounded-md hover:bg-[#0c5836] duration-1000 uppercase mb-4"
+              >
+                Add to Cart
+              </Link>
             </div>
           ))}
         </div>
