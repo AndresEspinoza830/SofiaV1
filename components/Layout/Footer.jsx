@@ -10,9 +10,8 @@ const Footer = () => {
             class="flex items-center mb-4 sm:mb-0"
           >
             <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
-              © 3{" "}
               <a href="https://flowbite.com/" class="hover:underline">
-                Flowbite™
+                Sophia's Restaurant
               </a>
               . All Rights Reserved.
             </span>

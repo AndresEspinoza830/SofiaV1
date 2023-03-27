@@ -1,4 +1,4 @@
-import Navbar from "../../components/Layout/Navbar";
+import Navbar from "../components/Layout/Navbar";
 import Image from "next/image";
 import img1 from "../public/food1.jpg";
 import img2 from "../public/food2.jpg";
