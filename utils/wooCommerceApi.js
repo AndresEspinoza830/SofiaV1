@@ -18,11 +18,9 @@ export async function fetchWooCommerceProducts() {
   }
 }
 
-export async function obtenerProductos(category) {
+export async function obtenerProductosCategoria(category) {
   try {
-    const response = await api.get(
-      `products?categories=${category}&per_page=40`
-    );
+    const response = await api.get(`products?category=${category}&per_page=40`);
     return response;
   } catch (error) {
     throw new Error(error);
@@ -46,14 +44,6 @@ export async function productoCross(id) {
     throw new Error(error);
   }
 }
-
-// WooCommerce.post("orders", data)
-//     .then((response) => {
-//         console.log(response.data);
-//     })
-//     .catch((error) => {
-//         console.log(error.response.data);
-//     });
 
 export async function crearOrder(data) {
   try {

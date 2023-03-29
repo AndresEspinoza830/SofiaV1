@@ -10,7 +10,7 @@ export default function Home({ carrito, eliminarProducto }) {
   return (
     <>
       <Navbar carrito={carrito} eliminarProducto={eliminarProducto} />
-      <div className=" w-full bg-[url('/banner.jpg')] h-screen flex justify-center items-center ">
+      <div className=" w-full bg-[url('/banner.jpg')] h-screen bg-cover bg-no-repeat flex justify-center items-center ">
         <div className="absolute text-[#F2F2F2] text-cente flex flex-col justify-center items-center">
           <div className="flex items-end space-x-2">
             <div className="flex space-x-1">

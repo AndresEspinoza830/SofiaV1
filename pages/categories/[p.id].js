@@ -1,13 +1,16 @@
 import Link from "next/link";
 import Footer from "../../components/Layout/Footer";
 import Navbar from "../../components/Layout/Navbar";
-import { obtenerProductos } from "../../utils/wooCommerceApi";
+import { obtenerProductosCategoria } from "../../utils/wooCommerceApi";
+import ImagenDefault from "../../assets/descarga.jpg";
 
 const name = ({ productos, carrito, eliminarProducto }) => {
   productos.map(
     (p) => (p.description = p.description.replace(/(<([^>]+)>)/gi, ""))
   );
+
   console.log(productos);
+
   return (
     <>
       <Navbar carrito={carrito} eliminarProducto={eliminarProducto} />
@@ -22,7 +25,11 @@ const name = ({ productos, carrito, eliminarProducto }) => {
                 <img
                   alt="Placeholder"
                   className="block h-auto w-full"
-                  src={producto?.images[0]?.src}
+                  src={`${
+                    producto?.images[0]?.src
+                      ? producto?.images[0]?.src
+                      : ImagenDefault
+                  } }`}
                 ></img>
                 <h2 className="my-2 font-philo text-[#052617] uppercase">
                   {producto.name}
@@ -61,13 +68,13 @@ export async function getServerSideProps({ query }) {
   const ruta = Object.values(query)[0];
   console.log(ruta);
 
-  const productosWoo = await obtenerProductos(ruta).catch((error) =>
-    console.error(error)
+  const productosCategoria = await obtenerProductosCategoria(ruta).catch(
+    (error) => console.error(error)
   );
 
   return {
     props: {
-      productos: productosWoo.data,
+      productos: productosCategoria.data,
     },
   };
 }

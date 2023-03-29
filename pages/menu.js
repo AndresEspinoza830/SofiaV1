@@ -13,7 +13,7 @@ const menu = ({ products, carrito, eliminarProducto }) => {
       <div className="min-h-screen m-auto px-5 md:px-20 max-w-[1360px] mx-auto">
         <div className="w-full flex text-center items-center mt-14 border-2 py-5 px-1 rounded-lg">
           {products.map((p) => (
-            <Link key={p.id} className="w-full" href={`/categories/${p.name}`}>
+            <Link key={p.id} className="w-full" href={`/categories/${p.id}`}>
               <h2 className="font-philo">{p.name}</h2>
             </Link>
           ))}

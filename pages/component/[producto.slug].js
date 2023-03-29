@@ -1,17 +1,28 @@
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { obtenerProductoPagina } from "../../utils/wooCommerceApi";
+import {
+  obtenerProductoPagina,
+  productoCross,
+} from "../../utils/wooCommerceApi";
 import Navbar from "../../components/Layout/Navbar";
 import Footer from "../../components/Layout/Footer";
 import pors from "../../public/default.png";
 
-const producto = ({ producto, agregarCarrito, eliminarProducto, carrito }) => {
+const producto = ({
+  producto,
+  agregarCarrito,
+  eliminarProducto,
+  carrito,
+  productosCross,
+}) => {
   const [cantidad, setCantidad] = useState(1);
 
   producto.map(
     (p) => (p.description = p.description.replace(/(<([^>]+)>)/gi, ""))
   );
+
+  console.log(productosCross);
 
   const product = producto[0];
   console.log(product);
@@ -37,8 +48,6 @@ const producto = ({ producto, agregarCarrito, eliminarProducto, carrito }) => {
     agregarCarrito(guitarraSeleccionada);
     toast.success("Agregado al pedido");
   };
-
-  console.log(carrito);
 
   return (
     <>
@@ -128,22 +137,21 @@ const producto = ({ producto, agregarCarrito, eliminarProducto, carrito }) => {
             </div>
           </div>
         </div>
-        {/* <div className="w-full md:mx-2 mt-12">
-        <h3 className="font-philo font-bold text-xl mb-4">
-          Tambien te puede interesar
-        </h3>
-        <div className="flex justify-between">
-          {idscross !== []
-            ? idcross.map((cross) => (
-                <Cross
-                  key={cross.id}
-                  cross={cross}
-                  agregarCarrito={agregarCarrito}
-                />
-              ))
-            : ""}
-        </div>
-      </div> */}
+      </div>
+
+      <div className="max-w-[1320px] px-2 md:px-10 py-8 mx-auto flex w-full flex-wrap">
+        {productosCross.map((producto) => (
+          <div className="w-1/4">
+            <div>
+              <img
+                src={producto?.images[0]?.src ? producto?.images[0]?.src : pors}
+              />
+            </div>
+
+            <h2>{producto.name}</h2>
+            <button>ADD TO CART</button>
+          </div>
+        ))}
       </div>
 
       <ToastContainer autoClose={2000} />
@@ -162,11 +170,14 @@ export async function getServerSideProps({ query }) {
     console.error(error)
   );
 
-  //   console.log(productosWoo);
+  const crossIds = productosWoo?.data[0]?.cross_sell_ids;
+  const productosCross = await productoCross(crossIds);
+  console.log(productosCross);
 
   return {
     props: {
       producto: productosWoo.data,
+      productosCross: productosCross?.data,
     },
   };
 }
