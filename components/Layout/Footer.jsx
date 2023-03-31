@@ -7,10 +7,13 @@ const Footer = () => {
         <div class="sm:flex sm:items-center sm:justify-between">
           <a
             href="https://flowbite.com/"
-            class="flex items-center mb-4 sm:mb-0"
+            class="flex items-center mb-4 sm:mb-0 "
           >
-            <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
-              <a href="https://flowbite.com/" class="hover:underline">
+            <span class="block text-sm text-gray-500 dark:text-gray-400">
+              <a
+                href="https://flowbite.com/"
+                className="hover:underline text-center"
+              >
                 Sophia's Restaurant
               </a>
               . All Rights Reserved.

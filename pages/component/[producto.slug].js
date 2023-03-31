@@ -141,7 +141,7 @@ const producto = ({
 
       <div className="max-w-[1320px] px-2 md:px-10 py-8 mx-auto flex w-full flex-wrap">
         {productosCross.map((producto) => (
-          <div className="w-1/4">
+          <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
             <div>
               <img
                 src={producto?.images[0]?.src ? producto?.images[0]?.src : pors}
