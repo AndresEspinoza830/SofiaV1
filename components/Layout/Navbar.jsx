@@ -67,7 +67,7 @@ const Navbar = ({ carrito, eliminarProducto }) => {
               <p>No hay productos en el carrito</p>
             ) : (
               <>
-                <table className="w-full mb-4">
+                <table className="w-full mb-4 z-50">
                   <thead>
                     <tr>
                       <th>Producto</th>

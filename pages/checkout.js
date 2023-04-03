@@ -265,7 +265,7 @@ const checkout = ({
           </div>
         ) : (
           <>
-            <div className="w-1/2">
+            <div className="w-full md:w-1/2">
               <div>
                 <a href="/carrito" className="flex items-center my-2">
                   <svg
@@ -561,7 +561,7 @@ const checkout = ({
             {pending ? (
               ""
             ) : (
-              <div className="w-1/2 ml-7 flex flex-col">
+              <div className="w-full md:w-1/2 ml-7 flex flex-col">
                 <div className="order-2">
                   <div className="w-full px-4 py-4 rounded-md">
                     <h2 className="text-md mb-4">RESUMEN DEL PEDIDO</h2>

@@ -35,13 +35,13 @@ const Carrito = ({
           No hay productos seleccionados
         </p>
       ) : (
-        <div className="w-full mx-auto flex max-w-[1360px] py-10">
-          <table className="w-3/4">
+        <div className="w-full mx-auto md:flex max-w-[1360px] py-10 px-2">
+          <table className="w-full md:w-3/4">
             <thead>
               <tr>
                 <th>Dish</th>
                 <th>Producto</th>
-                <th>Cantidad</th>
+                <th className="hidden md:block">Cantidad</th>
                 <th>Precio</th>
                 <th>Eliminar</th>
               </tr>
@@ -58,9 +58,9 @@ const Carrito = ({
                     />
                   </td>
                   <td className="text-center">{producto.name}</td>
-                  <td>
+                  <td className="hidden md:block">
                     <select
-                      className="w-24 text-center"
+                      className="w-24 text-center  "
                       onChange={(e) =>
                         actualizarCantidad({
                           id: producto.id,
@@ -99,7 +99,7 @@ const Carrito = ({
               {carrito.length ? (
                 <button
                   type="button"
-                  className="bg-indigo-700 text-white py-3 px-10 rounded-md"
+                  className="bg-indigo-700 mt-3 md:mt-0 text-white py-3 px-10 rounded-md"
                   onClick={handleEliminar}
                 >
                   Remove all
@@ -110,7 +110,7 @@ const Carrito = ({
             </tbody>
           </table>
 
-          <div className="w-1/4 border-[1px] px-4 py-4 rounded-md">
+          <div className="mt-5 md:mt-0 md:w-1/4 border-[1px] px-4 py-4 rounded-md">
             <h2 className="text-md mb-4">RESUMEN DEL PEDIDO</h2>
             <p className=" font-bold py-1">Subtotal: ${total}</p>
             <p className=" font-bold py-1">Descuento: -0.00</p>

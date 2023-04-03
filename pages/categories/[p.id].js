@@ -6,8 +6,11 @@ import {
   obtenerProductosCategoria,
 } from "../../utils/wooCommerceApi";
 import ImagenDefault from "../../assets/descarga.jpg";
+import { useState } from "react";
 
 const name = ({ productos, carrito, eliminarProducto, products }) => {
+  const [navResponsive, setNavResponsive] = useState(false);
+
   products = products.filter((p) => p.name !== "Uncategorized");
   console.log(products);
   productos.map(
@@ -17,13 +20,59 @@ const name = ({ productos, carrito, eliminarProducto, products }) => {
   return (
     <>
       <Navbar carrito={carrito} eliminarProducto={eliminarProducto} />
-      <div className="max-w-[1360px] mx-auto w-full flex text-center items-center mt-14 border-2 py-5 px-1 rounded-lg">
+      <div className="max-w-[1360px] hidden  mx-auto w-full md:flex text-center items-center mt-14 border-2 py-5 px-1 rounded-lg">
         {products.map((p) => (
           <Link key={p.id} className="w-full" href={`/categories/${p.id}`}>
             <h2 className="font-philo">{p.name}</h2>
           </Link>
         ))}
       </div>
+      {/* Nav Responsive */}
+      <button
+        id="dropdownDefaultButton"
+        data-dropdown-toggle="dropdown"
+        className="py-2 px-6 font-bold font-abc bg-[#052617] rounded-md text-white text-center w-full md:hidden flex items-center justify-between"
+        type="button"
+        onClick={() => setNavResponsive(!navResponsive)}
+      >
+        Menu{" "}
+        <svg
+          class="w-4 h-4 ml-2"
+          aria-hidden="true"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 9l-7 7-7-7"
+          ></path>
+        </svg>
+      </button>
+      {navResponsive && (
+        <div
+          id="dropdown"
+          className="w-full duration-1000 transition-transform"
+        >
+          <ul
+            className="py-2 px-2 text-sm text-gray-700 dark:text-gray-200 flex flex-col"
+            aria-labelledby="dropdownDefaultButton"
+          >
+            {products.map((p) => (
+              <Link
+                key={p.id}
+                className="w-full text-2xl font-abc text-center border-b-2 py-2"
+                href={`/categories/${p.id}`}
+              >
+                {p.name}
+              </Link>
+            ))}
+          </ul>
+        </div>
+      )}
       <div className="container my-12 mx-auto px-4 md:px-12">
         <div className="flex flex-wrap -mx-1 lg:-mx-4w-full">
           {productos.map((producto) => (
