@@ -7,7 +7,7 @@ import {
 } from "../../utils/wooCommerceApi";
 import Navbar from "../../components/Layout/Navbar";
 import Footer from "../../components/Layout/Footer";
-import pors from "../../public/default.png";
+import prueba from "../../public/default.png";
 
 const producto = ({
   producto,
@@ -39,7 +39,7 @@ const producto = ({
       id: product.id,
       name: product.name,
       price: product.regular_price,
-      // image: product.Images,
+      image: product?.images[0]?.src,
       cantidad: cantidad,
       sku: product.sku,
       item: "item",
@@ -132,7 +132,7 @@ const producto = ({
               <img
                 alt="Placeholder"
                 className="block h-auto w-full"
-                src={product?.images[0]?.src}
+                src={product?.images[0]?.src ?? prueba.src}
               ></img>
             </div>
           </div>
@@ -143,9 +143,7 @@ const producto = ({
         {productosCross.map((producto) => (
           <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
             <div>
-              <img
-                src={producto?.images[0]?.src ? producto?.images[0]?.src : pors}
-              />
+              <img src={producto?.images[0]?.src ?? prueba.src} />
             </div>
 
             <h2>{producto.name}</h2>

@@ -2,155 +2,164 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../../public/sofia.png";
+import { AiFillPhone } from "react-icons";
 
 const Navbar = ({ carrito, eliminarProducto }) => {
   const [cart, setCart] = useState(false);
   const [hamburguer, setHamburguer] = useState(false);
 
   const mostrarCarrito = () => {
-    setCart(true);
+    setCart(!cart);
   };
 
   const mostrarHamburguesa = () => {
     setHamburguer(!hamburguer);
   };
 
+  console.log(carrito);
+
   return (
     <div className="">
-      {cart ? (
-        <div className="fixed top-0 left-0 w-full h-screen bg-black/70 z-80">
-          <div className="fixed right-0 pt-[50px] top-0 w-[75%] sm:w-[60%] md:w-[28%] bg-white h-screen shadow-m p-2 transition-all ease-in-out duration-500 ">
-            <div className="flex justify-end mb-4">
-              <svg
-                width={20}
-                className="cursor-pointer flex justify-end"
-                onClick={() => setCart(false)}
-                viewBox="0 0 1024 1024"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M818.1 872.1c-15.4 0-30.7-5.9-42.4-17.6l-613-612.9c-23.4-23.4-23.4-61.4 0-84.9 23.4-23.4 61.4-23.4 84.9 0l612.9 612.9c23.4 23.4 23.4 61.4 0 84.9a59.914 59.914 0 0 1-42.4 17.6z"
-                  fill=""
-                />
-                <path
-                  d="M205.1 872.1c-15.4 0-30.7-5.9-42.4-17.6-23.4-23.4-23.4-61.4 0-84.9l612.9-612.9c23.4-23.4 61.4-23.4 84.9 0 23.4 23.4 23.4 61.4 0 84.9L247.6 854.5c-11.7 11.7-27.1 17.6-42.5 17.6z"
-                  fill=""
-                />
-                <path
-                  d="M818.1 872.1c-15.4 0-30.7-5.9-42.4-17.6l-613-612.9c-23.4-23.4-23.4-61.4 0-84.9 23.4-23.4 61.4-23.4 84.9 0l612.9 612.9c23.4 23.4 23.4 61.4 0 84.9a59.914 59.914 0 0 1-42.4 17.6z"
-                  fill=""
-                />
-                <path
-                  d="M205.1 872.1c-15.4 0-30.7-5.9-42.4-17.6-23.4-23.4-23.4-61.4 0-84.9l612.9-612.9c23.4-23.4 61.4-23.4 84.9 0 23.4 23.4 23.4 61.4 0 84.9L247.6 854.5c-11.7 11.7-27.1 17.6-42.5 17.6z"
-                  fill=""
-                />
-                <path
-                  d="M818.1 872.1c-15.4 0-30.7-5.9-42.4-17.6l-613-612.9c-23.4-23.4-23.4-61.4 0-84.9 23.4-23.4 61.4-23.4 84.9 0l612.9 612.9c23.4 23.4 23.4 61.4 0 84.9a59.914 59.914 0 0 1-42.4 17.6z"
-                  fill=""
-                />
-                <path
-                  d="M205.1 872.1c-15.4 0-30.7-5.9-42.4-17.6-23.4-23.4-23.4-61.4 0-84.9l612.9-612.9c23.4-23.4 61.4-23.4 84.9 0 23.4 23.4 23.4 61.4 0 84.9L247.6 854.5c-11.7 11.7-27.1 17.6-42.5 17.6z"
-                  fill=""
-                />
-                <path
-                  d="M818.1 872.1c-15.4 0-30.7-5.9-42.4-17.6l-613-612.9c-23.4-23.4-23.4-61.4 0-84.9 23.4-23.4 61.4-23.4 84.9 0l612.9 612.9c23.4 23.4 23.4 61.4 0 84.9a59.914 59.914 0 0 1-42.4 17.6z"
-                  fill=""
-                />
-                <path
-                  d="M205.1 872.1c-15.4 0-30.7-5.9-42.4-17.6-23.4-23.4-23.4-61.4 0-84.9l612.9-612.9c23.4-23.4 61.4-23.4 84.9 0 23.4 23.4 23.4 61.4 0 84.9L247.6 854.5c-11.7 11.7-27.1 17.6-42.5 17.6z"
-                  fill=""
-                />
-              </svg>
-            </div>
-            {carrito.length === 0 ? (
-              <p>No hay productos en el carrito</p>
-            ) : (
-              <>
-                <table className="w-full mb-4 z-50">
-                  <thead>
-                    <tr>
-                      <th>Producto</th>
-                      <th>Cantidad</th>
-                      <th>Precio</th>
-                    </tr>
-                  </thead>
-                  <tbody className="">
-                    {carrito.map((p) => (
-                      <tr key={p.id} className="text-center">
-                        <td className="flex justify-center items-center">
-                          <Image
-                            src={p.imagen}
-                            width={90}
-                            height={90}
-                            alt={p.name}
-                            className="relative"
-                          />
-                          <svg
-                            width={10}
-                            className="cursor-pointer absolute right-3 fill-red-500"
-                            onClick={() => eliminarProducto(p.id)}
-                            viewBox="0 0 1024 1024"
-                            version="1.1"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M818.1 872.1c-15.4 0-30.7-5.9-42.4-17.6l-613-612.9c-23.4-23.4-23.4-61.4 0-84.9 23.4-23.4 61.4-23.4 84.9 0l612.9 612.9c23.4 23.4 23.4 61.4 0 84.9a59.914 59.914 0 0 1-42.4 17.6z"
-                              fill=""
-                            />
-                            <path
-                              d="M205.1 872.1c-15.4 0-30.7-5.9-42.4-17.6-23.4-23.4-23.4-61.4 0-84.9l612.9-612.9c23.4-23.4 61.4-23.4 84.9 0 23.4 23.4 23.4 61.4 0 84.9L247.6 854.5c-11.7 11.7-27.1 17.6-42.5 17.6z"
-                              fill=""
-                            />
-                            <path
-                              d="M818.1 872.1c-15.4 0-30.7-5.9-42.4-17.6l-613-612.9c-23.4-23.4-23.4-61.4 0-84.9 23.4-23.4 61.4-23.4 84.9 0l612.9 612.9c23.4 23.4 23.4 61.4 0 84.9a59.914 59.914 0 0 1-42.4 17.6z"
-                              fill=""
-                            />
-                            <path
-                              d="M205.1 872.1c-15.4 0-30.7-5.9-42.4-17.6-23.4-23.4-23.4-61.4 0-84.9l612.9-612.9c23.4-23.4 61.4-23.4 84.9 0 23.4 23.4 23.4 61.4 0 84.9L247.6 854.5c-11.7 11.7-27.1 17.6-42.5 17.6z"
-                              fill=""
-                            />
-                            <path
-                              d="M818.1 872.1c-15.4 0-30.7-5.9-42.4-17.6l-613-612.9c-23.4-23.4-23.4-61.4 0-84.9 23.4-23.4 61.4-23.4 84.9 0l612.9 612.9c23.4 23.4 23.4 61.4 0 84.9a59.914 59.914 0 0 1-42.4 17.6z"
-                              fill=""
-                            />
-                            <path
-                              d="M205.1 872.1c-15.4 0-30.7-5.9-42.4-17.6-23.4-23.4-23.4-61.4 0-84.9l612.9-612.9c23.4-23.4 61.4-23.4 84.9 0 23.4 23.4 23.4 61.4 0 84.9L247.6 854.5c-11.7 11.7-27.1 17.6-42.5 17.6z"
-                              fill=""
-                            />
-                            <path
-                              d="M818.1 872.1c-15.4 0-30.7-5.9-42.4-17.6l-613-612.9c-23.4-23.4-23.4-61.4 0-84.9 23.4-23.4 61.4-23.4 84.9 0l612.9 612.9c23.4 23.4 23.4 61.4 0 84.9a59.914 59.914 0 0 1-42.4 17.6z"
-                              fill=""
-                            />
-                            <path
-                              d="M205.1 872.1c-15.4 0-30.7-5.9-42.4-17.6-23.4-23.4-23.4-61.4 0-84.9l612.9-612.9c23.4-23.4 61.4-23.4 84.9 0 23.4 23.4 23.4 61.4 0 84.9L247.6 854.5c-11.7 11.7-27.1 17.6-42.5 17.6z"
-                              fill=""
-                            />
-                          </svg>
-                        </td>
-                        <td>{p.cantidad}</td>
-                        <td>{p.price}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-                <div className="w-full">
-                  <h3 className="font-philo mb-4">Subtotal:</h3>
-                  <Link
-                    href="/carrito"
-                    className="bg-[#052617] text-white font-philo block text-center py-2"
-                  >
-                    Go to Cart
-                  </Link>
-                </div>
-              </>
-            )}
+      <div
+        className={`${
+          cart ? "translate-x-0" : "translate-x-full"
+        } ease-in-out duration-300 fixed top-0 left-0 w-full h-screen bg-black/70 z-80`}
+      >
+        <div className="fixed right-0 pt-[50px] top-0 w-[75%] sm:w-[60%] md:w-[28%] bg-white h-screen shadow-m p-2 transition-all ease-in-out duration-500 ">
+          <div className="flex justify-end mb-4">
+            <svg
+              width={20}
+              className="cursor-pointer flex justify-end"
+              onClick={() => setCart(false)}
+              viewBox="0 0 1024 1024"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M818.1 872.1c-15.4 0-30.7-5.9-42.4-17.6l-613-612.9c-23.4-23.4-23.4-61.4 0-84.9 23.4-23.4 61.4-23.4 84.9 0l612.9 612.9c23.4 23.4 23.4 61.4 0 84.9a59.914 59.914 0 0 1-42.4 17.6z"
+                fill=""
+              />
+              <path
+                d="M205.1 872.1c-15.4 0-30.7-5.9-42.4-17.6-23.4-23.4-23.4-61.4 0-84.9l612.9-612.9c23.4-23.4 61.4-23.4 84.9 0 23.4 23.4 23.4 61.4 0 84.9L247.6 854.5c-11.7 11.7-27.1 17.6-42.5 17.6z"
+                fill=""
+              />
+              <path
+                d="M818.1 872.1c-15.4 0-30.7-5.9-42.4-17.6l-613-612.9c-23.4-23.4-23.4-61.4 0-84.9 23.4-23.4 61.4-23.4 84.9 0l612.9 612.9c23.4 23.4 23.4 61.4 0 84.9a59.914 59.914 0 0 1-42.4 17.6z"
+                fill=""
+              />
+              <path
+                d="M205.1 872.1c-15.4 0-30.7-5.9-42.4-17.6-23.4-23.4-23.4-61.4 0-84.9l612.9-612.9c23.4-23.4 61.4-23.4 84.9 0 23.4 23.4 23.4 61.4 0 84.9L247.6 854.5c-11.7 11.7-27.1 17.6-42.5 17.6z"
+                fill=""
+              />
+              <path
+                d="M818.1 872.1c-15.4 0-30.7-5.9-42.4-17.6l-613-612.9c-23.4-23.4-23.4-61.4 0-84.9 23.4-23.4 61.4-23.4 84.9 0l612.9 612.9c23.4 23.4 23.4 61.4 0 84.9a59.914 59.914 0 0 1-42.4 17.6z"
+                fill=""
+              />
+              <path
+                d="M205.1 872.1c-15.4 0-30.7-5.9-42.4-17.6-23.4-23.4-23.4-61.4 0-84.9l612.9-612.9c23.4-23.4 61.4-23.4 84.9 0 23.4 23.4 23.4 61.4 0 84.9L247.6 854.5c-11.7 11.7-27.1 17.6-42.5 17.6z"
+                fill=""
+              />
+              <path
+                d="M818.1 872.1c-15.4 0-30.7-5.9-42.4-17.6l-613-612.9c-23.4-23.4-23.4-61.4 0-84.9 23.4-23.4 61.4-23.4 84.9 0l612.9 612.9c23.4 23.4 23.4 61.4 0 84.9a59.914 59.914 0 0 1-42.4 17.6z"
+                fill=""
+              />
+              <path
+                d="M205.1 872.1c-15.4 0-30.7-5.9-42.4-17.6-23.4-23.4-23.4-61.4 0-84.9l612.9-612.9c23.4-23.4 61.4-23.4 84.9 0 23.4 23.4 23.4 61.4 0 84.9L247.6 854.5c-11.7 11.7-27.1 17.6-42.5 17.6z"
+                fill=""
+              />
+            </svg>
           </div>
+          {carrito.length === 0 ? (
+            <p>No hay productos en el carrito</p>
+          ) : (
+            <>
+              <table className="w-full mb-4 z-50">
+                <thead>
+                  <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                  </tr>
+                </thead>
+                <tbody className="">
+                  {carrito.map((p) => (
+                    <tr key={p.id} className="text-center">
+                      <td className="flex justify-center items-center">
+                        <img
+                          alt="Placeholder"
+                          className="block h-auto w-[70px]"
+                          src={p.image}
+                        />
+                        <svg
+                          width={10}
+                          className="cursor-pointer absolute right-3 fill-red-500"
+                          onClick={() => eliminarProducto(p.id)}
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M818.1 872.1c-15.4 0-30.7-5.9-42.4-17.6l-613-612.9c-23.4-23.4-23.4-61.4 0-84.9 23.4-23.4 61.4-23.4 84.9 0l612.9 612.9c23.4 23.4 23.4 61.4 0 84.9a59.914 59.914 0 0 1-42.4 17.6z"
+                            fill=""
+                          />
+                          <path
+                            d="M205.1 872.1c-15.4 0-30.7-5.9-42.4-17.6-23.4-23.4-23.4-61.4 0-84.9l612.9-612.9c23.4-23.4 61.4-23.4 84.9 0 23.4 23.4 23.4 61.4 0 84.9L247.6 854.5c-11.7 11.7-27.1 17.6-42.5 17.6z"
+                            fill=""
+                          />
+                          <path
+                            d="M818.1 872.1c-15.4 0-30.7-5.9-42.4-17.6l-613-612.9c-23.4-23.4-23.4-61.4 0-84.9 23.4-23.4 61.4-23.4 84.9 0l612.9 612.9c23.4 23.4 23.4 61.4 0 84.9a59.914 59.914 0 0 1-42.4 17.6z"
+                            fill=""
+                          />
+                          <path
+                            d="M205.1 872.1c-15.4 0-30.7-5.9-42.4-17.6-23.4-23.4-23.4-61.4 0-84.9l612.9-612.9c23.4-23.4 61.4-23.4 84.9 0 23.4 23.4 23.4 61.4 0 84.9L247.6 854.5c-11.7 11.7-27.1 17.6-42.5 17.6z"
+                            fill=""
+                          />
+                          <path
+                            d="M818.1 872.1c-15.4 0-30.7-5.9-42.4-17.6l-613-612.9c-23.4-23.4-23.4-61.4 0-84.9 23.4-23.4 61.4-23.4 84.9 0l612.9 612.9c23.4 23.4 23.4 61.4 0 84.9a59.914 59.914 0 0 1-42.4 17.6z"
+                            fill=""
+                          />
+                          <path
+                            d="M205.1 872.1c-15.4 0-30.7-5.9-42.4-17.6-23.4-23.4-23.4-61.4 0-84.9l612.9-612.9c23.4-23.4 61.4-23.4 84.9 0 23.4 23.4 23.4 61.4 0 84.9L247.6 854.5c-11.7 11.7-27.1 17.6-42.5 17.6z"
+                            fill=""
+                          />
+                          <path
+                            d="M818.1 872.1c-15.4 0-30.7-5.9-42.4-17.6l-613-612.9c-23.4-23.4-23.4-61.4 0-84.9 23.4-23.4 61.4-23.4 84.9 0l612.9 612.9c23.4 23.4 23.4 61.4 0 84.9a59.914 59.914 0 0 1-42.4 17.6z"
+                            fill=""
+                          />
+                          <path
+                            d="M205.1 872.1c-15.4 0-30.7-5.9-42.4-17.6-23.4-23.4-23.4-61.4 0-84.9l612.9-612.9c23.4-23.4 61.4-23.4 84.9 0 23.4 23.4 23.4 61.4 0 84.9L247.6 854.5c-11.7 11.7-27.1 17.6-42.5 17.6z"
+                            fill=""
+                          />
+                        </svg>
+                      </td>
+                      <td>{p.cantidad}</td>
+                      <td>{p.price}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <div className="w-full">
+                <h3 className="font-philo mb-4">Subtotal:</h3>
+                <Link
+                  href="/carrito"
+                  className="bg-[#052617] text-white font-philo block text-center py-2"
+                >
+                  Go to Cart
+                </Link>
+              </div>
+            </>
+          )}
         </div>
-      ) : (
-        ""
-      )}
+      </div>
 
+      <div className="bg-black w-full py-4 px-2 md:px-0">
+        <h3 className="font-extrabold text-xl  border-white text-white uppercase text-center">
+          Atencion en New Jersey *
+        </h3>
+        <h3 className="font-extrabold text-xl  border-white text-white uppercase text-center">
+          Delivery: Mon - Sun: 11:00 AM - 9:45 PM
+        </h3>
+      </div>
       <div className="w-full py-1 shadow-lg z-98">
         <div className="flex justify-between items-center w-full px-10 2xl:px-20">
           <a href="/">
@@ -233,82 +242,89 @@ const Navbar = ({ carrito, eliminarProducto }) => {
           </div>
         </div>
       </div>
-      {hamburguer && (
-        <div className="fixed left-0 top-0 w-full h-screen bg-black/70 z-10">
-          <div className="fixed letf-0 top-0 w-[75%] sm:w-[60%] md:w-[30%] h-screen bg-white p-3 ease-in duration-200">
-            <div className="flex w-full items-center justify-between">
-              <img src="/logo.jpeg" width={80} alt="" />
-              <div>
-                <svg
-                  width={20}
-                  className="cursor-pointer flex justify-end"
-                  onClick={mostrarHamburguesa}
-                  viewBox="0 0 1024 1024"
-                  version="1.1"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M818.1 872.1c-15.4 0-30.7-5.9-42.4-17.6l-613-612.9c-23.4-23.4-23.4-61.4 0-84.9 23.4-23.4 61.4-23.4 84.9 0l612.9 612.9c23.4 23.4 23.4 61.4 0 84.9a59.914 59.914 0 0 1-42.4 17.6z"
-                    fill=""
-                  />
-                  <path
-                    d="M205.1 872.1c-15.4 0-30.7-5.9-42.4-17.6-23.4-23.4-23.4-61.4 0-84.9l612.9-612.9c23.4-23.4 61.4-23.4 84.9 0 23.4 23.4 23.4 61.4 0 84.9L247.6 854.5c-11.7 11.7-27.1 17.6-42.5 17.6z"
-                    fill=""
-                  />
-                  <path
-                    d="M818.1 872.1c-15.4 0-30.7-5.9-42.4-17.6l-613-612.9c-23.4-23.4-23.4-61.4 0-84.9 23.4-23.4 61.4-23.4 84.9 0l612.9 612.9c23.4 23.4 23.4 61.4 0 84.9a59.914 59.914 0 0 1-42.4 17.6z"
-                    fill=""
-                  />
-                  <path
-                    d="M205.1 872.1c-15.4 0-30.7-5.9-42.4-17.6-23.4-23.4-23.4-61.4 0-84.9l612.9-612.9c23.4-23.4 61.4-23.4 84.9 0 23.4 23.4 23.4 61.4 0 84.9L247.6 854.5c-11.7 11.7-27.1 17.6-42.5 17.6z"
-                    fill=""
-                  />
-                  <path
-                    d="M818.1 872.1c-15.4 0-30.7-5.9-42.4-17.6l-613-612.9c-23.4-23.4-23.4-61.4 0-84.9 23.4-23.4 61.4-23.4 84.9 0l612.9 612.9c23.4 23.4 23.4 61.4 0 84.9a59.914 59.914 0 0 1-42.4 17.6z"
-                    fill=""
-                  />
-                  <path
-                    d="M205.1 872.1c-15.4 0-30.7-5.9-42.4-17.6-23.4-23.4-23.4-61.4 0-84.9l612.9-612.9c23.4-23.4 61.4-23.4 84.9 0 23.4 23.4 23.4 61.4 0 84.9L247.6 854.5c-11.7 11.7-27.1 17.6-42.5 17.6z"
-                    fill=""
-                  />
-                  <path
-                    d="M818.1 872.1c-15.4 0-30.7-5.9-42.4-17.6l-613-612.9c-23.4-23.4-23.4-61.4 0-84.9 23.4-23.4 61.4-23.4 84.9 0l612.9 612.9c23.4 23.4 23.4 61.4 0 84.9a59.914 59.914 0 0 1-42.4 17.6z"
-                    fill=""
-                  />
-                  <path
-                    d="M205.1 872.1c-15.4 0-30.7-5.9-42.4-17.6-23.4-23.4-23.4-61.4 0-84.9l612.9-612.9c23.4-23.4 61.4-23.4 84.9 0 23.4 23.4 23.4 61.4 0 84.9L247.6 854.5c-11.7 11.7-27.1 17.6-42.5 17.6z"
-                    fill=""
-                  />
-                </svg>
-              </div>
-            </div>
-            <div className="py-4 flex flex-col h-full items-start">
-              <ul className="w-full h-full flex flex-col space-y-24 items-center">
-                <li className="font-philo text-lg hover:text-[#D9BF73] duration-300">
-                  <Link className="font-abc text-2xl" href="/">
-                    Home
-                  </Link>
-                </li>
-                <li className="font-philo text-lg hover:text-[#D9BF73] duration-300">
-                  <Link className="font-abc text-2xl" href="/contact">
-                    About us{" "}
-                  </Link>
-                </li>
-                <li className="font-philo text-lg hover:text-[#D9BF73] duration-300">
-                  <Link className="font-abc text-2xl" href="/menu">
-                    Menu
-                  </Link>
-                </li>
-                <li className="font-philo text-lg hover:text-[#D9BF73] duration-300">
-                  <Link className="font-abc text-2xl" href="/menu">
-                    Contact us
-                  </Link>
-                </li>
-              </ul>
+      <div
+        className={`${
+          hamburguer ? "-translate-x-0" : "-translate-x-full"
+        } ease-in-out duration-300 fixed left-0 top-0 w-full h-screen z-10`}
+      >
+        <div className="fixed letf-0 top-0 w-[75%] sm:w-[60%] md:w-[30%] h-screen bg-white p-3 ease-in duration-200">
+          <div className="flex w-full items-center justify-between">
+            <img src="/logo.jpeg" width={80} alt="" />
+            <div>
+              <svg
+                width={20}
+                className="cursor-pointer flex justify-end"
+                onClick={mostrarHamburguesa}
+                viewBox="0 0 1024 1024"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M818.1 872.1c-15.4 0-30.7-5.9-42.4-17.6l-613-612.9c-23.4-23.4-23.4-61.4 0-84.9 23.4-23.4 61.4-23.4 84.9 0l612.9 612.9c23.4 23.4 23.4 61.4 0 84.9a59.914 59.914 0 0 1-42.4 17.6z"
+                  fill=""
+                />
+                <path
+                  d="M205.1 872.1c-15.4 0-30.7-5.9-42.4-17.6-23.4-23.4-23.4-61.4 0-84.9l612.9-612.9c23.4-23.4 61.4-23.4 84.9 0 23.4 23.4 23.4 61.4 0 84.9L247.6 854.5c-11.7 11.7-27.1 17.6-42.5 17.6z"
+                  fill=""
+                />
+                <path
+                  d="M818.1 872.1c-15.4 0-30.7-5.9-42.4-17.6l-613-612.9c-23.4-23.4-23.4-61.4 0-84.9 23.4-23.4 61.4-23.4 84.9 0l612.9 612.9c23.4 23.4 23.4 61.4 0 84.9a59.914 59.914 0 0 1-42.4 17.6z"
+                  fill=""
+                />
+                <path
+                  d="M205.1 872.1c-15.4 0-30.7-5.9-42.4-17.6-23.4-23.4-23.4-61.4 0-84.9l612.9-612.9c23.4-23.4 61.4-23.4 84.9 0 23.4 23.4 23.4 61.4 0 84.9L247.6 854.5c-11.7 11.7-27.1 17.6-42.5 17.6z"
+                  fill=""
+                />
+                <path
+                  d="M818.1 872.1c-15.4 0-30.7-5.9-42.4-17.6l-613-612.9c-23.4-23.4-23.4-61.4 0-84.9 23.4-23.4 61.4-23.4 84.9 0l612.9 612.9c23.4 23.4 23.4 61.4 0 84.9a59.914 59.914 0 0 1-42.4 17.6z"
+                  fill=""
+                />
+                <path
+                  d="M205.1 872.1c-15.4 0-30.7-5.9-42.4-17.6-23.4-23.4-23.4-61.4 0-84.9l612.9-612.9c23.4-23.4 61.4-23.4 84.9 0 23.4 23.4 23.4 61.4 0 84.9L247.6 854.5c-11.7 11.7-27.1 17.6-42.5 17.6z"
+                  fill=""
+                />
+                <path
+                  d="M818.1 872.1c-15.4 0-30.7-5.9-42.4-17.6l-613-612.9c-23.4-23.4-23.4-61.4 0-84.9 23.4-23.4 61.4-23.4 84.9 0l612.9 612.9c23.4 23.4 23.4 61.4 0 84.9a59.914 59.914 0 0 1-42.4 17.6z"
+                  fill=""
+                />
+                <path
+                  d="M205.1 872.1c-15.4 0-30.7-5.9-42.4-17.6-23.4-23.4-23.4-61.4 0-84.9l612.9-612.9c23.4-23.4 61.4-23.4 84.9 0 23.4 23.4 23.4 61.4 0 84.9L247.6 854.5c-11.7 11.7-27.1 17.6-42.5 17.6z"
+                  fill=""
+                />
+              </svg>
             </div>
           </div>
+          <div className="py-4 flex flex-col h-full items-start">
+            <ul className="w-full h-full flex flex-col space-y-24 items-center">
+              <li className="font-philo text-lg hover:text-[#D9BF73] duration-300">
+                <Link className="font-abc text-2xl" href="/">
+                  Home
+                </Link>
+              </li>
+              <li className="font-philo text-lg hover:text-[#D9BF73] duration-300">
+                <Link className="font-abc text-2xl" href="/contact">
+                  About us{" "}
+                </Link>
+              </li>
+              <li className="font-philo text-lg hover:text-[#D9BF73] duration-300">
+                <Link className="font-abc text-2xl" href="/menu">
+                  Menu
+                </Link>
+              </li>
+              <li className="font-philo text-lg hover:text-[#D9BF73] duration-300">
+                <Link className="font-abc text-2xl" href="/menu">
+                  Contact us
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
-      )}
+      </div>
+      <div
+        className={`w-full h-screen bg-black/70 z-9 ${
+          hamburguer ? "translate-x-0" : "translate-x-full"
+        } ease-in-out duration-300 fixed left-0 top-0`}
+      ></div>
     </div>
   );
 };

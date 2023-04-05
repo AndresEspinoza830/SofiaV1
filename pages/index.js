@@ -11,7 +11,7 @@ export default function Home({ carrito, eliminarProducto }) {
     <>
       <Navbar carrito={carrito} eliminarProducto={eliminarProducto} />
       <div className=" w-full bg-[url('/banner.jpg')] h-screen bg-cover bg-no-repeat flex justify-center items-center ">
-        <div className="absolute text-[#F2F2F2] text-center flex flex-col justify-center items-center mx-auto ">
+        <div className="absolute text-[#F2F2F2] text-center flex flex-col justify-center items-center mx-auto z-6">
           <div className="flex items-end space-x-2">
             <div className="flex space-x-1">
               <div className="w-[8px] h-[8px] bg-[#D9BF73] rounded-full"></div>
@@ -143,7 +143,7 @@ export default function Home({ carrito, eliminarProducto }) {
         <div className="md:flex py-4 text-center md:text-start">
           <div className="md:w-1/2 py-8 md:px-[50px] flex flex-col md:justify-start space-y-4">
             <div>
-              <h2 className=" mb-8 font-abc text-2xl font-extrabold">
+              <h2 className="font-medium mb-8 font-abc text-2xl ">
                 Sofia's Restaurant
               </h2>
               <h2 className="font-abc  text-lg font-bold">Business Hours</h2>
