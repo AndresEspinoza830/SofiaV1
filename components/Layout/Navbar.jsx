@@ -2,7 +2,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../../public/sofia.png";
-import { AiFillPhone } from "react-icons";
+import { FiPhoneCall } from "react-icons/fi";
 
 const Navbar = ({ carrito, eliminarProducto }) => {
   const [cart, setCart] = useState(false);
@@ -194,7 +194,7 @@ const Navbar = ({ carrito, eliminarProducto }) => {
             <div className="w-6 h-6 bg-red-500 font-medium top-[-8px] left-5 text-white absolute rounded-full m-auto flex justify-center items-center">
               {carrito.length || "0"}
             </div>
-
+            <FiPhoneCall className="stroke-black stroke-4" />
             {/* <Link href="/carrito"> */}
             <svg
               viewBox="0 0 1024 1024"

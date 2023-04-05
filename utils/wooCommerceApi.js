@@ -11,7 +11,7 @@ const api = new WooCommerceRestApi({
 // fetch all products from WooCommerce //
 export async function fetchWooCommerceProducts() {
   try {
-    const response = await api.get("products/categories");
+    const response = await api.get("products/categories?per_page=20");
     return response;
   } catch (error) {
     throw new Error(error);
@@ -20,7 +20,7 @@ export async function fetchWooCommerceProducts() {
 
 export async function obtenerProductosCategoria(category) {
   try {
-    const response = await api.get(`products?category=${category}&per_page=40`);
+    const response = await api.get(`products?category=${category}&per_page=12`);
     return response;
   } catch (error) {
     throw new Error(error);
