@@ -46,7 +46,7 @@ const producto = ({
     };
 
     agregarCarrito(guitarraSeleccionada);
-    toast.success("Agregado al pedido");
+    toast.success("Added to Cart");
   };
 
   return (

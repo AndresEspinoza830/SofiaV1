@@ -191,10 +191,12 @@ const Navbar = ({ carrito, eliminarProducto }) => {
             </ul>
           </nav>
           <div className="flex relative h-full">
-            <div className="w-6 h-6 bg-red-500 font-medium top-[-8px] left-5 text-white absolute rounded-full m-auto flex justify-center items-center">
+            <div className="w-6 h-6 bg-red-500 font-medium top-[-8px] left-16 text-white absolute rounded-full m-auto flex justify-center items-center">
               {carrito.length || "0"}
             </div>
-            <FiPhoneCall className="stroke-black stroke-4" />
+            <a href="tel:937498630" className="mr-4">
+              <img src="/phone3.png" className="w-[43px] h-[30]" alt="" />
+            </a>
             {/* <Link href="/carrito"> */}
             <svg
               viewBox="0 0 1024 1024"
