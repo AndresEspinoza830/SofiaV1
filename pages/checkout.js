@@ -264,8 +264,9 @@ const checkout = ({
             </Link>
           </div>
         ) : (
-          <>
-            <div className="w-full md:w-1/2">
+          <div className="w-full flex flex-col-reverse md:flex-row">
+            <div className="w-full">
+              {/* Volver atras */}
               <div>
                 <a href="/carrito" className="flex items-center my-2">
                   <svg
@@ -295,20 +296,19 @@ const checkout = ({
                   />
                 </div>
               ) : (
-                /* </Modal> */
-                <>
-                  <h2 className=" text-2xl block">Checkout</h2>
+                <div className="w-full mb-[60px] md:mb-0">
+                  <h2 className="text-2xl font-bold block px-3">Checkout</h2>
                   <form
                     onSubmit={handleSubmit(onSubmit)}
                     action=""
-                    className="space-y-4 px-3 py-2"
+                    className="space-y-4 px-3 py-2 w-full"
                   >
                     <div className="w-full flex space-x-6">
-                      <div>
+                      <div className="w-full">
                         <label>Nombre</label>
                         <input
                           type="text"
-                          className="block bg-[#f2f2f2] p-2"
+                          className="w-full bg-[#f2f2f2] p-2"
                           placeholder="Nombre"
                           {...register("nombre", {
                             required: true,
@@ -321,11 +321,11 @@ const checkout = ({
                           </p>
                         )}
                       </div>
-                      <div>
+                      <div className="w-full">
                         <label htmlFor="apellido">Apellido</label>
                         <input
                           type="text"
-                          className="block bg-[#f2f2f2] p-2"
+                          className="w-full bg-[#f2f2f2] p-2"
                           id="apellido"
                           placeholder="Apellido"
                           {...register("apellido", {
@@ -550,30 +550,32 @@ const checkout = ({
 
                     <input
                       type="submit"
-                      className="bg-black text-white font-bold w-full p-2 cursor-pointer"
+                      className="bg-black text-white font-bold w-full p-2 cursor-pointer rounded-md"
                       value="Place Order"
                       onClick={onOpenModal}
                     />
                   </form>
-                </>
+                </div>
               )}
             </div>
             {pending ? (
               ""
             ) : (
-              <div className="w-full md:w-1/2 ml-7 flex flex-col">
+              <div className="w-full md:ml-7 flex flex-col px-3 md:px-0">
                 <div className="order-2">
-                  <div className="w-full px-4 py-4 rounded-md">
-                    <h2 className="text-md mb-4">RESUMEN DEL PEDIDO</h2>
-                    <p className=" font-bold py-1">Subtotal: ${total}</p>
-                    <p className=" font-bold py-1">Descuento: -0.00</p>
-                    <p className="mb-4 font-bold  py-4">
+                  <div className="w-full px-1 py-4 rounded-md">
+                    <h2 className="text-md mb-4 font-bold">
+                      RESUMEN DEL PEDIDO
+                    </h2>
+                    <p className=" font-semibold py-1">Subtotal: ${total}</p>
+                    <p className=" font-semibold py-1">Descuento: -0.00</p>
+                    <p className="mb-4 font-semibold  py-4">
                       Total a pagar: ${total}
                     </p>
                   </div>
                 </div>
 
-                <table className="w-full order-1">
+                <table className="w-full order-1 table-auto">
                   <thead>
                     <tr>
                       <th>Dish</th>
@@ -591,40 +593,19 @@ const checkout = ({
                             alt={producto.name}
                             width={150}
                             height={150}
+                            className="object-contain"
                           />
                         </td>
                         <td className="text-center">{producto.name}</td>
-                        <td>
-                          <select
-                            className="w-24 text-center"
-                            onChange={(e) =>
-                              actualizarCantidad({
-                                id: producto.id,
-                                cantidad: e.target.value,
-                              })
-                            }
-                            value={producto.cantidad}
-                          >
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                          </select>
-                        </td>
-                        <td>{producto.price}</td>
+                        <td className="text-center">{producto.cantidad}</td>
+                        <td className="text-center">{producto.price}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
             )}
-          </>
+          </div>
         )}
       </div>
       {finish ? "" : <Footer />}
