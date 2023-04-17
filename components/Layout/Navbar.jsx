@@ -2,9 +2,9 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../../public/sofia.png";
-import { FiPhoneCall } from "react-icons/fi";
+import prueba from "../../public/default.png";
 
-const Navbar = ({ carrito, eliminarProducto }) => {
+const Navbar = ({ carrito, eliminarProducto, pedido }) => {
   const [cart, setCart] = useState(false);
   const [hamburguer, setHamburguer] = useState(false);
 
@@ -16,6 +16,7 @@ const Navbar = ({ carrito, eliminarProducto }) => {
     setHamburguer(!hamburguer);
   };
 
+  console.log(pedido);
   console.log(carrito);
 
   return (
@@ -23,7 +24,7 @@ const Navbar = ({ carrito, eliminarProducto }) => {
       <div
         className={`${
           cart ? "translate-x-0" : "translate-x-full"
-        } ease-in-out duration-300 fixed top-0 left-0 w-full h-screen bg-black/70 z-80`}
+        } ease-in-out duration-300 fixed left-0 top-0 w-full h-screen z-10 bg-black/70`}
       >
         <div className="fixed right-0 pt-[50px] top-0 w-[75%] sm:w-[60%] md:w-[28%] bg-white h-screen shadow-m p-2 transition-all ease-in-out duration-500 ">
           <div className="flex justify-end mb-4">
@@ -88,7 +89,7 @@ const Navbar = ({ carrito, eliminarProducto }) => {
                         <img
                           alt="Placeholder"
                           className="block h-auto w-[70px]"
-                          src={p.image}
+                          src={p.image ?? prueba.src}
                         />
                         <svg
                           width={10}
@@ -210,7 +211,7 @@ const Navbar = ({ carrito, eliminarProducto }) => {
             </svg>
             {/* </Link> */}
             <button className="border-2 hidden md:block font-abc font-philo text-lg border-black bg-transparent hover:border-[#D9BF73] hover:text-[#D9BF73] rounded-sm py-2 px-6 duration-300">
-              Go to Menu
+              Mis Pedidos
             </button>
 
             <svg

@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link"; //Primero importar cosas de react, next,componentes,estilos
 import Navbar from "../components/Layout/Navbar";
 import Image from "next/image";
-import prueba from "../public/prueba.jpg";
 import Footer from "../components/Layout/Footer";
+import prueba from "../public/default.png";
 
 const Carrito = ({
   carrito,
@@ -11,6 +11,7 @@ const Carrito = ({
   eliminarProducto,
   setCarrito,
   limpiarCarrito,
+  pedido,
 }) => {
   const [total, setTotal] = useState(0);
 
@@ -29,17 +30,21 @@ const Carrito = ({
 
   return (
     <>
-      <Navbar carrito={carrito} eliminarProducto={eliminarProducto} />
+      <Navbar
+        carrito={carrito}
+        eliminarProducto={eliminarProducto}
+        pedido={pedido}
+      />
       {carrito.length === 0 ? (
         <p className="flex justify-center mt-4">
           No hay productos seleccionados
         </p>
       ) : (
         <div className="w-full mx-auto md:flex max-w-[1360px] py-10 px-2">
-          <table className="w-full md:w-3/4">
+          <table className="w-full md:w-3/4 table-auto">
             <thead>
               <tr>
-                <th>Dish</th>
+                <th className="text-start">Dish</th>
                 <th>Producto</th>
                 <th className="hidden md:block">Cantidad</th>
                 <th>Precio</th>
@@ -51,8 +56,9 @@ const Carrito = ({
                 <tr key={producto.id}>
                   <td>
                     <Image
-                      src={prueba}
+                      src={producto.image ?? prueba.src}
                       alt={producto.name}
+                      className="flex"
                       width={150}
                       height={150}
                     />

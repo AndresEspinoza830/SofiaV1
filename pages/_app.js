@@ -7,8 +7,8 @@ function MyApp({ Component, pageProps }) {
       ? JSON.parse(localStorage.getItem("carrito")) ?? []
       : [];
   const [carrito, setCarrito] = useState(carritoLS);
-
   const [paginaLista, setPaginaLista] = useState(false);
+  const [pedido, setPedido] = useState([]);
 
   useEffect(() => {
     setPaginaLista(true);
@@ -61,7 +61,6 @@ function MyApp({ Component, pageProps }) {
   };
 
   return paginaLista ? (
-    // <PayPalScriptProvider options={{ "client-id": process.env.NEXT_PUBLIC_PAYPAL_CLIENT || '' }}>
     <Component
       {...pageProps}
       carrito={carrito}
@@ -70,9 +69,10 @@ function MyApp({ Component, pageProps }) {
       actualizarCantidad={actualizarCantidad}
       setCarrito={setCarrito}
       limpiarCarrito={limpiarCarrito}
+      setPedido={setPedido}
+      pedido={pedido}
     />
-  ) : // </PayPalScriptProvider>
-  null;
+  ) : null;
 }
 
 export default MyApp;

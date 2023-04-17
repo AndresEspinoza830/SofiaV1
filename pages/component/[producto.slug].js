@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Head from "next/head";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {
@@ -15,6 +16,7 @@ const producto = ({
   eliminarProducto,
   carrito,
   productosCross,
+  pedido,
 }) => {
   const [cantidad, setCantidad] = useState(1);
 
@@ -51,7 +53,56 @@ const producto = ({
 
   return (
     <>
-      <Navbar carrito={carrito} eliminarProducto={eliminarProducto} />
+      <Head>
+        <meta
+          property="og:locale"
+          content={product?.yoast_head_json?.og_locale}
+        />
+        <meta property="og:type" content={product?.yoast_head_json?.og_type} />
+        <meta
+          property="og:title"
+          content={product?.yoast_head_json?.og_title}
+        />
+        <meta
+          property="og:description"
+          content={product?.yoast_head_json?.og_description}
+        />
+        <meta property="og:url" content={product?.yoast_head_json?.og_url} />
+        <meta
+          property="og:site_name"
+          content={product?.yoast_head_json?.og_site_name}
+        />
+        <meta
+          property="article_modified_time
+          "
+          content={product?.yoast_head_json?.og_article_modified_time}
+        />
+        <meta
+          property="og:image
+          "
+          content={product?.yoast_head_json?.og_image[0]?.url}
+        />
+        <meta
+          property="og:image:width
+          "
+          content={product?.yoast_head_json?.og_image[0]?.width}
+        />
+        <meta
+          property="og:image:height
+          "
+          content={product?.yoast_head_json?.og_image[0]?.height}
+        />
+        <meta
+          property="og:image:type
+          "
+          content={product?.yoast_head_json?.og_image[0]?.type}
+        />
+      </Head>
+      <Navbar
+        carrito={carrito}
+        eliminarProducto={eliminarProducto}
+        pedido={pedido}
+      />
       <div className="max-w-[1320px] px-2 md:px-10 py-8 mx-auto">
         <div className="w-full md:mx-2">
           <div>

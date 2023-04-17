@@ -7,7 +7,7 @@ import Navbar from "../components/Layout/Navbar";
 import { fetchWooCommerceProducts } from "../utils/wooCommerceApi";
 import prueba from "../public/default.png";
 
-const menu = ({ products, carrito, eliminarProducto }) => {
+const menu = ({ products, carrito, eliminarProducto, pedido }) => {
   products = products.filter((p) => p.name !== "Uncategorized");
   console.log(products);
 
@@ -52,7 +52,11 @@ const menu = ({ products, carrito, eliminarProducto }) => {
 
   return (
     <>
-      <Navbar carrito={carrito} eliminarProducto={eliminarProducto} />
+      <Navbar
+        carrito={carrito}
+        eliminarProducto={eliminarProducto}
+        pedido={pedido}
+      />
       <div className="max-w-[1400px] h-[780px] w-full m-auto py-16 px-2 relative group">
         <div
           style={{ backgroundImage: `url(${slides[currentIndex].url})` }}

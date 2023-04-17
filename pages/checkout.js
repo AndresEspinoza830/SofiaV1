@@ -10,6 +10,7 @@ import MoonLoader from "react-spinners/MoonLoader";
 import { redirect } from "next/dist/server/api-utils";
 import Link from "next/link";
 import Footer from "../components/Layout/Footer";
+import prueba2 from "../public/default.png";
 
 const override = {
   display: "block",
@@ -23,6 +24,8 @@ const checkout = ({
   eliminarProducto,
   limpiarCarrito,
   actualizarCantidad,
+  pedido,
+  setPedido,
 }) => {
   const [total, setTotal] = useState(0);
   const [pickup, setPickup] = useState(false);
@@ -147,7 +150,6 @@ const checkout = ({
       },
     });
     const resul = await response.json();
-    console.log(resul);
 
     const arregloNuevoClover = [carrito, dataClover];
 
@@ -225,14 +227,28 @@ const checkout = ({
     const resultActualizarItems = await responseActualizarItems.json();
     console.log(resultActualizarItems);
 
-    limpiarCarrito();
+    const nuevoPedido = {
+      carrito,
+      nombre,
+      apellido,
+      direccion,
+      telefono,
+    };
+
+    setPedido([...pedido, nuevoPedido]);
+
     setPending(false);
     setFinish(true);
+    limpiarCarrito();
   };
 
   return (
     <div className="relative">
-      <Navbar carrito={carrito} eliminarProducto={eliminarProducto} />
+      <Navbar
+        carrito={carrito}
+        eliminarProducto={eliminarProducto}
+        pedido={pedido}
+      />
       <div className="w-full mx-auto max-w-[1360px] py-10 flex">
         {finish ? (
           <div className="flex flex-col w-full justify-center items-center space-y-3">
@@ -589,10 +605,10 @@ const checkout = ({
                       <tr key={producto.id}>
                         <td>
                           <Image
-                            src={pruebaNuevo}
+                            src={producto?.image ?? prueba2.src}
                             alt={producto.name}
-                            width={150}
-                            height={150}
+                            width={100}
+                            height={100}
                             className="object-contain"
                           />
                         </td>

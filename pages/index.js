@@ -6,10 +6,14 @@ import img3 from "../public/food3.jpg";
 import res from "../public/res2.jpg";
 import Footer from "../components/Layout/Footer";
 
-export default function Home({ carrito, eliminarProducto }) {
+export default function Home({ carrito, eliminarProducto, pedido }) {
   return (
     <>
-      <Navbar carrito={carrito} eliminarProducto={eliminarProducto} />
+      <Navbar
+        carrito={carrito}
+        eliminarProducto={eliminarProducto}
+        pedido={pedido}
+      />
       <div className=" w-full bg-[url('/banner.jpg')] h-screen bg-cover bg-no-repeat flex justify-center items-center ">
         <div className="absolute text-[#F2F2F2] text-center flex flex-col justify-center items-center mx-auto z-6">
           <div className="flex items-end space-x-2">

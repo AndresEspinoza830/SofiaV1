@@ -9,7 +9,7 @@ import {
 import prueba from "../../public/default.png";
 import { useState } from "react";
 
-const name = ({ productos, carrito, eliminarProducto, products }) => {
+const name = ({ productos, carrito, eliminarProducto, products, pedido }) => {
   const [navResponsive, setNavResponsive] = useState(false);
 
   const router = useRouter();
@@ -30,7 +30,11 @@ const name = ({ productos, carrito, eliminarProducto, products }) => {
 
   return (
     <>
-      <Navbar carrito={carrito} eliminarProducto={eliminarProducto} />
+      <Navbar
+        carrito={carrito}
+        eliminarProducto={eliminarProducto}
+        pedido={pedido}
+      />
       <div className="max-w-[1360px] hidden shadow-xl  mx-auto w-full md:flex text-center items-center mt-14 border-[1px] border-gray-300 py-5 px-1 rounded-lg">
         {products.map((p) => (
           <Link key={p.id} className="w-full" href={`/categories/${p.id}`}>
