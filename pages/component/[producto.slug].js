@@ -56,46 +56,52 @@ const producto = ({
       <Head>
         <meta
           property="og:locale"
-          content={product?.yoast_head_json?.og_locale}
+          content={product?.yoast_head_json?.og_locale ?? ""}
         />
-        <meta property="og:type" content={product?.yoast_head_json?.og_type} />
+        <meta
+          property="og:type"
+          content={product?.yoast_head_json?.og_type ?? ""}
+        />
         <meta
           property="og:title"
-          content={product?.yoast_head_json?.og_title}
+          content={product?.yoast_head_json?.og_title ?? ""}
         />
         <meta
           property="og:description"
-          content={product?.yoast_head_json?.og_description}
+          content={product?.yoast_head_json?.og_description ?? ""}
         />
-        <meta property="og:url" content={product?.yoast_head_json?.og_url} />
+        <meta
+          property="og:url"
+          content={product?.yoast_head_json?.og_url ?? ""}
+        />
         <meta
           property="og:site_name"
-          content={product?.yoast_head_json?.og_site_name}
+          content={product?.yoast_head_json?.og_site_name ?? ""}
         />
         <meta
           property="article_modified_time
           "
-          content={product?.yoast_head_json?.og_article_modified_time}
+          content={product?.yoast_head_json?.og_article_modified_time ?? ""}
         />
         <meta
           property="og:image
           "
-          content={product?.yoast_head_json?.og_image[0]?.url}
+          content={product?.yoast_head_json?.og_image[0]?.url ?? null}
         />
         <meta
           property="og:image:width
           "
-          content={product?.yoast_head_json?.og_image[0]?.width}
+          content={product?.yoast_head_json?.og_image[0]?.width ?? null}
         />
         <meta
           property="og:image:height
           "
-          content={product?.yoast_head_json?.og_image[0]?.height}
+          content={product?.yoast_head_json?.og_image[0]?.height ?? null}
         />
         <meta
           property="og:image:type
           "
-          content={product?.yoast_head_json?.og_image[0]?.type}
+          content={product?.yoast_head_json?.og_image[0]?.type ?? null}
         />
       </Head>
       <Navbar
