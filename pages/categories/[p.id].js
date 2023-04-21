@@ -9,8 +9,9 @@ import {
   obtenerProductosCategoria,
 } from "../../utils/wooCommerceApi";
 import prueba from "../../public/default.png";
+import Image from "next/image";
 
-const name = ({ productos, carrito, eliminarProducto, products, pedido }) => {
+const Name = ({ productos, carrito, eliminarProducto, products, pedido }) => {
   const [navResponsive, setNavResponsive] = useState(false);
 
   const router = useRouter();
@@ -139,7 +140,7 @@ const name = ({ productos, carrito, eliminarProducto, products, pedido }) => {
             >
               <div className="px-2 overflow-hidden">
                 <div className="overflow-hidden">
-                  <img
+                  <Image
                     alt="Placeholder"
                     className="block h-auto w-full hover:scale-110 duration-300 ease-in-out"
                     src={`${producto?.images[0]?.src ?? prueba.src}`}
@@ -177,7 +178,7 @@ const name = ({ productos, carrito, eliminarProducto, products, pedido }) => {
   );
 };
 
-export default name;
+export default Name;
 
 export async function getServerSideProps({ query }) {
   const ruta = Object.values(query)[0];

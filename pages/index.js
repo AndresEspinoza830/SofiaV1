@@ -5,6 +5,7 @@ import img2 from "../public/food2.jpg";
 import img3 from "../public/food3.jpg";
 import res from "../public/res2.jpg";
 import Footer from "../components/Layout/Footer";
+import Link from "next/link";
 
 export default function Home({ carrito, eliminarProducto, pedido }) {
   return (
@@ -61,12 +62,12 @@ export default function Home({ carrito, eliminarProducto, pedido }) {
             the corner of S Broad St. and Elizabeth Ave. not too far from Scott
             Park! Order Online today!
           </p>
-          <a
+          <Link
             href="/menu"
             className="border-2 font-philo text-lg border-black bg-transparent hover:border-[#D9BF73] hover:text-[#D9BF73] rounded-sm py-2 px-6 duration-300"
           >
             Go to Menu
-          </a>
+          </Link>
         </div>
         <div className="overflow-hidden mx-auto md:w-6/12 mt-8 md:mt-0">
           <Image

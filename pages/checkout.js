@@ -19,7 +19,7 @@ const override = {
   position: "absolute",
 };
 
-const checkout = ({
+const Checkout = ({
   carrito,
   eliminarProducto,
   limpiarCarrito,
@@ -284,7 +284,7 @@ const checkout = ({
             <div className="w-full">
               {/* Volver atras */}
               <div>
-                <a href="/carrito" className="flex items-center my-2">
+                <Link href="/carrito" className="flex items-center my-2">
                   <svg
                     viewBox="0 0 1024 1024"
                     version="1.1"
@@ -298,7 +298,7 @@ const checkout = ({
                     />
                   </svg>
                   <p className="font-medium">Atrás</p>
-                </a>
+                </Link>
               </div>
               {pending ? (
                 // <Modal open={open} className="p-6 w-full h-screen " center>
@@ -629,4 +629,4 @@ const checkout = ({
   );
 };
 
-export default checkout;
+export default Checkout;

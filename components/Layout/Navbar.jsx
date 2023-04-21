@@ -86,7 +86,7 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
                   {carrito.map((p) => (
                     <tr key={p.id} className="text-center">
                       <td className="flex justify-center items-center">
-                        <img
+                        <Image
                           alt="Placeholder"
                           className="block h-auto w-[70px]"
                           src={p.image ?? prueba.src}
@@ -163,9 +163,9 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
       </div>
       <div className="w-full py-1 shadow-lg z-98">
         <div className="flex justify-between items-center w-full px-10 2xl:px-20">
-          <a href="/">
+          <Link href="/">
             <Image src={logo} width={100} alt="Logo" />
-          </a>
+          </Link>
 
           <nav className="hidden md:block">
             <ul className="flex space-x-10 text-black">
@@ -195,9 +195,9 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
             <div className="w-6 h-6 bg-red-500 font-medium top-[-8px] left-[73px] text-white absolute rounded-full m-auto flex justify-center items-center">
               {carrito.length || "0"}
             </div>
-            <a href="tel:937498630" className="mr-4">
-              <img src="/phone3.png" className="w-[40px] h-[30]" alt="" />
-            </a>
+            <Link href="tel:937498630" className="mr-4">
+              <Image src="/phone3.png" className="w-[40px] h-[30]" alt="" />
+            </Link>
             {/* <Link href="/carrito"> */}
             <svg
               viewBox="0 0 1024 1024"
@@ -252,7 +252,7 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
       >
         <div className="fixed letf-0 top-0 w-[75%] sm:w-[60%] md:w-[30%] h-screen bg-white p-3 ease-in duration-200">
           <div className="flex w-full items-center justify-between">
-            <img src="/logo.jpeg" width={80} alt="" />
+            <Image src="/logo.jpeg" width={80} alt="" />
             <div>
               <svg
                 width={20}

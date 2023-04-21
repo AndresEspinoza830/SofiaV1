@@ -188,11 +188,11 @@ const producto = ({
               />
             </form>
             <div>
-              <img
+              <Image
                 alt="Placeholder"
                 className="block h-auto w-full"
                 src={product?.images[0]?.src ?? prueba.src}
-              ></img>
+              ></Image>
             </div>
           </div>
         </div>
@@ -202,7 +202,10 @@ const producto = ({
         {productosCross.map((producto) => (
           <div key={producto.id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
             <div>
-              <Image src={producto?.images[0]?.src ?? prueba.src} />
+              <Image
+                src={producto?.images[0]?.src ?? prueba.src}
+                alt={producto.name}
+              />
             </div>
 
             <h2>{producto.name}</h2>

@@ -7,7 +7,7 @@ import Navbar from "../components/Layout/Navbar";
 import { fetchWooCommerceProducts } from "../utils/wooCommerceApi";
 import prueba from "../public/default.png";
 
-const menu = ({ products, carrito, eliminarProducto, pedido }) => {
+const Menu = ({ products, carrito, eliminarProducto, pedido }) => {
   products = products.filter((p) => p.name !== "Uncategorized");
   console.log(products);
 
@@ -96,7 +96,8 @@ const menu = ({ products, carrito, eliminarProducto, pedido }) => {
                 {pro.name}
               </h2>
               <Link href={`/categories/${pro.id}`} className="overflow-hidden">
-                <img
+                <Image
+                  alt={pro.name}
                   className="w-full rounded-lg shadow-2xl hover:scale-110 ease-out duration-100"
                   src={pro?.image?.src ?? prueba.src}
                 />
@@ -110,7 +111,7 @@ const menu = ({ products, carrito, eliminarProducto, pedido }) => {
   );
 };
 
-export default menu;
+export default Menu;
 
 export async function getServerSideProps() {
   const wooCommerceProducts = await fetchWooCommerceProducts().catch((error) =>
