@@ -50,17 +50,17 @@ export default function Home({ carrito, eliminarProducto, pedido }) {
       <div className="w-full md:flex max-w-[1360px] mx-auto px-10 py-12 items-center">
         <div className="text-center md:w-6/12">
           <h2 className="font-extrabold text-5xl mb-1 tracking-widest mt-0 font-abc text-[#052617]">
-            Sofia's Restaurant
+            Sofia Restaurant
           </h2>
           <h3 className="font-extrabold text-2xl mb-1 tracking-widest mt-0 font-philo">
             restaurante
           </h3>
           <p className="md:px-7 mb-8 font-light text-lg">
-            Welcome to Sofia's Restaurant! We provide our customers with
-            authentic Hispanic cuisines like parilla, pescados y mariscos,
-            sandwiches, and more! Come try our food today! We are located at on
-            the corner of S Broad St. and Elizabeth Ave. not too far from Scott
-            Park! Order Online today!
+            Welcome to Sofia Restaurant! We provide our customers with authentic
+            Hispanic cuisines like parilla, pescados y mariscos, sandwiches, and
+            more! Come try our food today! We are located at on the corner of S
+            Broad St. and Elizabeth Ave. not too far from Scott Park! Order
+            Online today!
           </p>
           <Link
             href="/menu"
@@ -149,7 +149,7 @@ export default function Home({ carrito, eliminarProducto, pedido }) {
           <div className="md:w-1/2 py-8 md:px-[50px] flex flex-col md:justify-start space-y-4">
             <div>
               <h2 className="font-medium mb-8 font-abc text-2xl ">
-                Sofia's Restaurant
+                Sofia Restaurant
               </h2>
               <h2 className="font-abc  text-lg font-bold">Business Hours</h2>
               <p className="font-abc">Mon - Sun: 11:00 AM - 10:00 PM</p>

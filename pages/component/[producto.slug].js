@@ -12,7 +12,7 @@ import prueba from "../../public/default.png";
 import Link from "next/link";
 import Image from "next/image";
 
-const producto = ({
+const Producto = ({
   producto,
   agregarCarrito,
   eliminarProducto,
@@ -220,7 +220,7 @@ const producto = ({
   );
 };
 
-export default producto;
+export default Producto;
 
 export async function getServerSideProps({ query }) {
   const slug = Object.values(query)[0];

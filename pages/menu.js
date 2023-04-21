@@ -6,6 +6,7 @@ import Footer from "../components/Layout/Footer";
 import Navbar from "../components/Layout/Navbar";
 import { fetchWooCommerceProducts } from "../utils/wooCommerceApi";
 import prueba from "../public/default.png";
+import Image from "next/image";
 
 const Menu = ({ products, carrito, eliminarProducto, pedido }) => {
   products = products.filter((p) => p.name !== "Uncategorized");

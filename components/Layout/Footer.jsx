@@ -14,7 +14,7 @@ const Footer = () => {
                 href="https://flowbite.com/"
                 className="hover:underline text-center"
               >
-                Sophia's Restaurant
+                Sofia Restaurant
               </a>
               . All Rights Reserved.
             </span>
