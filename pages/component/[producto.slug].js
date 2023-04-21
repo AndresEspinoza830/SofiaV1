@@ -9,6 +9,8 @@ import {
 import Navbar from "../../components/Layout/Navbar";
 import Footer from "../../components/Layout/Footer";
 import prueba from "../../public/default.png";
+import Link from "next/link";
+import Image from "next/image";
 
 const producto = ({
   producto,
@@ -112,7 +114,7 @@ const producto = ({
       <div className="max-w-[1320px] px-2 md:px-10 py-8 mx-auto">
         <div className="w-full md:mx-2">
           <div>
-            <a href="/menu" className="flex items-center my-2">
+            <Link href="/menu" className="flex items-center my-2">
               <svg
                 viewBox="0 0 1024 1024"
                 version="1.1"
@@ -126,7 +128,7 @@ const producto = ({
                 />
               </svg>
               <p className="font-medium">Back</p>
-            </a>
+            </Link>
             <h2 className="text-[#052617] text-3xl font-extrabold mb-6 font-philo">
               {product.name}
             </h2>
@@ -198,9 +200,9 @@ const producto = ({
 
       <div className="max-w-[1320px] px-2 md:px-10 py-8 mx-auto flex w-full flex-wrap">
         {productosCross.map((producto) => (
-          <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
+          <div key={producto.id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
             <div>
-              <img src={producto?.images[0]?.src ?? prueba.src} />
+              <Image src={producto?.images[0]?.src ?? prueba.src} />
             </div>
 
             <h2>{producto.name}</h2>

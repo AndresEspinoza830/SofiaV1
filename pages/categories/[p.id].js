@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Footer from "../../components/Layout/Footer";
@@ -8,7 +9,6 @@ import {
   obtenerProductosCategoria,
 } from "../../utils/wooCommerceApi";
 import prueba from "../../public/default.png";
-import { useState } from "react";
 
 const name = ({ productos, carrito, eliminarProducto, products, pedido }) => {
   const [navResponsive, setNavResponsive] = useState(false);
