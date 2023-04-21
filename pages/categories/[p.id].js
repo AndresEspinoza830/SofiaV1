@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Footer from "../../components/Layout/Footer";
 import Navbar from "../../components/Layout/Navbar";
+import Head from "next/head";
 import {
   fetchWooCommerceProducts,
   obtenerProductosCategoria,
@@ -30,6 +31,39 @@ const name = ({ productos, carrito, eliminarProducto, products, pedido }) => {
 
   return (
     <>
+      <Head>
+        <meta
+          property="og:locale"
+          content={productH2[0]?.yoast_head_json?.og_locale ?? ""}
+        />
+        <meta
+          property="og:type"
+          content={productH2[0]?.yoast_head_json?.og_type ?? ""}
+        />
+        <meta
+          property="og:title"
+          content={productH2[0]?.yoast_head_json?.og_title ?? ""}
+        />
+        <meta
+          property="og:description"
+          content={productH2[0]?.yoast_head_json?.og_description ?? ""}
+        />
+        <meta
+          property="og:url"
+          content={productH2[0]?.yoast_head_json?.og_url ?? ""}
+        />
+        <meta
+          property="og:site_name"
+          content={productH2[0]?.yoast_head_json?.og_site_name ?? ""}
+        />
+        <meta
+          property="article_modified_time
+          "
+          content={
+            productH2[0]?.yoast_head_json?.og_article_modified_time ?? ""
+          }
+        />
+      </Head>
       <Navbar
         carrito={carrito}
         eliminarProducto={eliminarProducto}

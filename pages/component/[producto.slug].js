@@ -25,9 +25,9 @@ const producto = ({
   );
 
   console.log(productosCross);
+  console.log(first);
 
   const product = producto[0];
-  console.log(product);
 
   const handleCarrito = (e) => {
     e.preventDefault();
@@ -86,22 +86,22 @@ const producto = ({
         <meta
           property="og:image
           "
-          content={product?.yoast_head_json?.og_image[0]?.url ?? null}
+          content={product?.yoast_head_json?.og_image[0]?.url ?? ""}
         />
         <meta
           property="og:image:width
           "
-          content={product?.yoast_head_json?.og_image[0]?.width ?? null}
+          content={product?.yoast_head_json?.og_image[0]?.width ?? ""}
         />
         <meta
           property="og:image:height
           "
-          content={product?.yoast_head_json?.og_image[0]?.height ?? null}
+          content={product?.yoast_head_json?.og_image[0]?.height ?? ""}
         />
         <meta
           property="og:image:type
           "
-          content={product?.yoast_head_json?.og_image[0]?.type ?? null}
+          content={product?.yoast_head_json?.og_image[0]?.type ?? ""}
         />
       </Head>
       <Navbar
