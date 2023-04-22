@@ -1,5 +1,5 @@
 const WooCommerceRestApi = require("@woocommerce/woocommerce-rest-api").default;
-import { isEmpty } from "lodash";
+// import { isEmpty } from "lodash";
 
 const api = new WooCommerceRestApi({
   url: process.env.NEXT_PUBLIC_WORDPRESS_SITE_URL,
@@ -27,10 +27,10 @@ export default async function handler(req, res) {
     error: "",
   };
 
-  if (isEmpty(req.body)) {
-    responseData.error = "Required data not sent";
-    return responseData;
-  }
+  // if (isEmpty(req.body)) {
+  //   responseData.error = "Required data not sent";
+  //   return responseData;
+  // }
 
   const data = req.body;
   data.status = "pending";
