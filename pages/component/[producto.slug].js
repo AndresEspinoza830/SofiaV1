@@ -46,7 +46,6 @@ const Producto = ({
       image: product?.images[0]?.src,
       cantidad: cantidad,
       sku: product.sku,
-      item: "item",
     };
 
     agregarCarrito(guitarraSeleccionada);
@@ -85,7 +84,7 @@ const Producto = ({
           "
           content={product?.yoast_head_json?.og_article_modified_time ?? ""}
         />
-        <meta
+        {/* <meta
           property="og:image
           "
           content={product?.yoast_head_json?.og_image[0]?.url ?? ""}
@@ -104,7 +103,7 @@ const Producto = ({
           property="og:image:type
           "
           content={product?.yoast_head_json?.og_image[0]?.type ?? ""}
-        />
+        /> */}
       </Head>
       <Navbar
         carrito={carrito}
@@ -224,7 +223,6 @@ export default Producto;
 
 export async function getServerSideProps({ query }) {
   const slug = Object.values(query)[0];
-  console.log(slug);
 
   const productosWoo = await obtenerProductoPagina(slug).catch((error) =>
     console.error(error)
