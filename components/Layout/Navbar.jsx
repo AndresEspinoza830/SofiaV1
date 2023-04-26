@@ -164,7 +164,7 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
       <div className="w-full py-1 shadow-lg z-98">
         <div className="flex justify-between items-center w-full px-10 2xl:px-20">
           <Link href="/">
-            <Image src={logo} width={100} alt="Logo" />
+            <Image src={logo} width={100} height={100} alt="Logo" />
           </Link>
 
           <nav className="hidden md:block">
@@ -196,7 +196,13 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
               {carrito.length || "0"}
             </div>
             <Link href="tel:937498630" className="mr-4">
-              <Image src="/phone3.png" className="w-[40px] h-[30]" alt="" />
+              <Image
+                src="/phone3.png"
+                width={40}
+                height={40}
+                className="w-[40px] h-[30]"
+                alt=""
+              />
             </Link>
             {/* <Link href="/carrito"> */}
             <svg
