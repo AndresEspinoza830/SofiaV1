@@ -89,6 +89,8 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
                         <Image
                           alt="Placeholder"
                           className="block h-auto w-[70px]"
+                          width={100}
+                          height={100}
                           src={p.image ?? prueba.src}
                         />
                         <svg
@@ -258,7 +260,7 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
       >
         <div className="fixed letf-0 top-0 w-[75%] sm:w-[60%] md:w-[30%] h-screen bg-white p-3 ease-in duration-200">
           <div className="flex w-full items-center justify-between">
-            <Image src="/logo.jpeg" width={80} alt="" />
+            <Image src="/logo.jpeg" width={80} height={80} alt="" />
             <div>
               <svg
                 width={20}

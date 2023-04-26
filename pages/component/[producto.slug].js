@@ -83,7 +83,7 @@ const Producto = ({
           "
           content={product?.yoast_head_json?.og_article_modified_time ?? ""}
         />
-        <meta
+        {/* <meta
           property="og:image
           "
           content={product?.yoast_head_json?.og_image[0]?.url ?? ""}
@@ -102,7 +102,7 @@ const Producto = ({
           property="og:image:type
           "
           content={product?.yoast_head_json?.og_image[0]?.type ?? ""}
-        />
+        /> */}
       </Head>
       <Navbar
         carrito={carrito}
@@ -188,7 +188,8 @@ const Producto = ({
             <div>
               <Image
                 alt="Placeholder"
-                width="100"
+                width={100}
+                height={100}
                 className="block h-auto w-full"
                 src={product?.images[0]?.src ?? prueba.src}
               ></Image>
@@ -203,6 +204,8 @@ const Producto = ({
             <div>
               <Image
                 src={producto?.images[0]?.src ?? prueba.src}
+                width={100}
+                height={100}
                 alt={producto.name}
               />
             </div>
