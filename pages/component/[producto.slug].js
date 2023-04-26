@@ -27,7 +27,6 @@ const Producto = ({
   );
 
   console.log(productosCross);
-  console.log(first);
 
   const product = producto[0];
 

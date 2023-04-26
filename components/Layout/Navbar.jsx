@@ -211,7 +211,7 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
             </svg>
             {/* </Link> */}
             <button className="border-2 hidden md:block font-abc font-philo text-lg border-black bg-transparent hover:border-[#D9BF73] hover:text-[#D9BF73] rounded-sm py-2 px-6 duration-300">
-              Mis Pedidos
+              Mis Ordenes
             </button>
 
             <svg
