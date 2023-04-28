@@ -99,9 +99,9 @@ const Menu = ({ products, carrito, eliminarProducto, pedido }) => {
               <Link href={`/categories/${pro.id}`} className="overflow-hidden">
                 <Image
                   alt={pro.name}
-                  width={100}
-                  height={100}
-                  className="w-full rounded-lg shadow-2xl hover:scale-110 ease-out duration-100"
+                  width={400}
+                  height={300}
+                  className=" rounded-lg shadow-2xl hover:scale-110 ease-out duration-100"
                   src={pro?.image?.src ?? prueba.src}
                 />
               </Link>

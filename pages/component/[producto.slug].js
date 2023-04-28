@@ -188,9 +188,9 @@ const Producto = ({
             <div>
               <Image
                 alt="Placeholder"
-                width={100}
-                height={100}
-                className="block h-auto w-full"
+                width={400}
+                height={300}
+                className=""
                 src={product?.images[0]?.src ?? prueba.src}
               ></Image>
             </div>

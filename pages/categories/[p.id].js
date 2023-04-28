@@ -142,9 +142,9 @@ const Name = ({ productos, carrito, eliminarProducto, products, pedido }) => {
                 <div className="overflow-hidden">
                   <Image
                     alt="Placeholder"
-                    width={100}
-                    height={100}
-                    className="block h-auto w-full hover:scale-110 duration-300 ease-in-out"
+                    width={1000}
+                    height={400}
+                    className=" hover:scale-110 duration-300 ease-in-out"
                     src={`${producto?.images[0]?.src ?? prueba.src}`}
                   />
                 </div>

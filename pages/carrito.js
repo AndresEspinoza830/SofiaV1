@@ -64,9 +64,9 @@ const Carrito = ({
                     />
                   </td>
                   <td className="text-center">{producto.name}</td>
-                  <td className="hidden md:block">
+                  <td className="">
                     <select
-                      className="w-24 text-center  "
+                      className="text-center"
                       onChange={(e) =>
                         actualizarCantidad({
                           id: producto.id,
@@ -75,7 +75,9 @@ const Carrito = ({
                       }
                       value={producto.cantidad}
                     >
-                      <option value="1">1</option>
+                      <option value="1" className="">
+                        1
+                      </option>
                       <option value="2">2</option>
                       <option value="3">3</option>
                       <option value="4">4</option>
@@ -87,7 +89,7 @@ const Carrito = ({
                       <option value="10">10</option>
                     </select>
                   </td>
-                  <td>{producto.price}</td>
+                  <td className="text-center">{producto.price}</td>
                   <td>
                     <svg
                       className="cursor-pointer m-auto hover:fill-red-600 hover:scale-110"
