@@ -12,6 +12,7 @@ module.exports = {
     extend: {},
     fontFamily: {
       abc: ["Edu NSW ACT Foundation", "cursive"],
+      check: ["Patua One", "cursive"],
     },
   },
   plugins: [],

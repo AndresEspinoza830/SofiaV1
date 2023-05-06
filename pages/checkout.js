@@ -314,270 +314,358 @@ const Checkout = ({
               ) : (
                 <div className="w-full mb-[60px] md:mb-0">
                   <h2 className="text-2xl font-bold block px-3">Checkout</h2>
-                  <form
-                    onSubmit={handleSubmit(onSubmit)}
-                    action=""
-                    className="space-y-4 px-3 py-2 w-full"
-                  >
-                    <div className="w-full flex space-x-6">
-                      <div className="w-full">
-                        <label>Nombre</label>
-                        <input
-                          type="text"
-                          className="w-full bg-[#f2f2f2] p-2"
-                          placeholder="Nombre"
-                          {...register("nombre", {
-                            required: true,
-                            maxLength: 16,
-                          })}
-                        />
-                        {errors.nombre?.type === "required" && (
-                          <p className="text-red-600 font-medium">
-                            El nombre es obligatorio
-                          </p>
-                        )}
-                      </div>
-                      <div className="w-full">
-                        <label htmlFor="apellido">Apellido</label>
-                        <input
-                          type="text"
-                          className="w-full bg-[#f2f2f2] p-2"
-                          id="apellido"
-                          placeholder="Apellido"
-                          {...register("apellido", {
-                            required: true,
-                            maxLength: 20,
-                          })}
-                        />
-                        {errors.apellido?.type === "required" && (
-                          <p className="text-red-600 font-medium">
-                            El apellido es obligatorio
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                    <div>
-                      <label htmlFor="email">Correo</label>
-                      <input
-                        type="email"
-                        className="block w-full bg-[#f2f2f2] p-2"
-                        id="email"
-                        placeholder="Email"
-                        {...register("email", {
-                          required: true,
-                          pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i,
-                        })}
-                      />
-                      {errors.correo?.type === "pattern" && (
-                        <p className="text-red-600 font-medium">
-                          El correo no es valido
-                        </p>
-                      )}
-                    </div>
-                    <div>
-                      <label htmlFor="telefono">Telefono</label>
-                      <input
-                        type="text"
-                        className="block w-full bg-[#f2f2f2] p-2"
-                        id="telefono"
-                        placeholder="Telefono"
-                        {...register("telefono", {
-                          required: true,
-                        })}
-                      />
-                      {errors.telefono?.type === "pattern" && (
-                        <p className="text-red-600 font-medium">
-                          El telefono no es valido
-                        </p>
-                      )}
-                    </div>
-                    <div>
-                      <label htmlFor="direccion">Direccion</label>
-                      <input
-                        type="text"
-                        className="block w-full bg-[#f2f2f2] p-2"
-                        id="direccion"
-                        placeholder="Direccion"
-                        {...register("direccion", {
-                          required: true,
-                        })}
-                      />
-                    </div>
-                    <div className="flex justify-center items-center space-x-3">
-                      <button
-                        onClick={handlerPick}
-                        className={`${
-                          delivery ? "disabled" : ""
-                        }bg-[#f2f2f2] px-6 py-3 rounded-md hover:scale-105 duration-200`}
-                      >
-                        Pickup
-                      </button>
-                      <p>OR</p>
-                      <button
-                        onClick={handlerDelivery}
-                        className={`${
-                          pickup ? "disabled" : ""
-                        } bg-[#f2f2f2] px-6 py-3 rounded-md hover:scale-105 duration-200`}
-                      >
-                        Delivery
-                      </button>
-                    </div>
-                    {pickup ? (
-                      <>
-                        <div className="flex justify-between">
-                          <div>
-                            <label htmlFor="city">City</label>
-                            <input
-                              type="text"
-                              className="block w-full bg-[#f2f2f2] p-2"
-                              id="city"
-                              placeholder="City"
-                              {...register("city", {
-                                required: true,
-                              })}
+                  <div className="flex justify-center items-center space-x-3">
+                    <button
+                      onClick={handlerPick}
+                      className={`${
+                        delivery ? "disabled" : ""
+                      }bg-[#f2f2f2] px-6 py-3 rounded-md hover:scale-105 duration-200 font-check`}
+                    >
+                      Pickup
+                    </button>
+                    <p>OR</p>
+                    <button
+                      onClick={handlerDelivery}
+                      className={`${
+                        pickup ? "disabled" : ""
+                      } bg-[#f2f2f2] px-6 py-3 rounded-md hover:scale-105 duration-200 font-check`}
+                    >
+                      Delivery
+                    </button>
+                  </div>
+                  {pickup ? (
+                    <>
+                      <div className="flex justify-between space-x-6 p-3 font-check mt-4">
+                        <h3 className="text-lg font-bold">DETAILS</h3>
+                        <div className="flex">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 22 20"
+                            fill="none"
+                            width={20}
+                            aria-label="Location pin icon"
+                          >
+                            <title>PickUp Shop Icon</title>
+                            <path
+                              d="M7.52297 0H4.32843C3.79799 0 3.28929 0.210713 2.91421 0.585786L0.87868 2.62132C0.316071 3.18393 0 3.94699 0 4.74264V6C0 7.10457 0.89543 8 2 8H4C5.10457 8 6 7.10457 6 6V4C6 3.87278 6.02428 3.74673 6.07152 3.62861L7.52297 0Z"
+                              fill="currentColor"
                             />
+                            <path
+                              d="M8 6C8 7.10457 8.89543 8 10 8H12C13.1046 8 14 7.10457 14 6V4.19258L12.323 0H9.67703L8 4.19258V6Z"
+                              fill="currentColor"
+                            />
+                            <path
+                              d="M15.9285 3.62861L14.477 0H17.6716C18.202 0 18.7107 0.210714 19.0858 0.585786L21.1213 2.62132C21.6839 3.18393 22 3.94699 22 4.74264V6C22 7.10457 21.1046 8 20 8H18C16.8954 8 16 7.10457 16 6V4C16 3.87278 15.9757 3.74673 15.9285 3.62861Z"
+                              fill="currentColor"
+                            />
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M1 18V9.87397C1.31962 9.95624 1.6547 9.99999 2 9.99999H4C5.19469 9.99999 6.26705 9.47623 7 8.64581C7.73294 9.47623 8.80531 9.99999 10 9.99999H12C13.1947 9.99999 14.2671 9.47623 15 8.64581C15.7329 9.47623 16.8053 9.99999 18 9.99999H20C20.3453 9.99999 20.6804 9.95624 21 9.87397V18C21 19.1046 20.1046 20 19 20H10V13H6V20H3C1.89543 20 1 19.1046 1 18ZM18 13H13V17H18V13Z"
+                              fill="currentColor"
+                            />
+                          </svg>
+                          <div className="ml-4">
+                            <h4 className="text-base">
+                              Pick Up - {"(25-40 min)"}
+                            </h4>
+                            <p className="text-sm">
+                              946 S Elmora Ave Elizabeth, NJ 07202
+                            </p>
                           </div>
-                          <div>
-                            <label htmlFor="state">State</label>
+                        </div>
+                      </div>
+
+                      <h3 className="p-3 font-check text-lg font-bold">
+                        CONTACT
+                      </h3>
+                      <form
+                        onSubmit={handleSubmit(onSubmit)}
+                        action=""
+                        className="space-y-4 px-3 py-2 w-full"
+                      >
+                        <div className="w-full flex space-x-6">
+                          <div className="w-full">
+                            <label className="font-check">Nombre</label>
                             <input
                               type="text"
-                              className="block w-full bg-[#f2f2f2] p-2"
-                              id="state"
-                              placeholder="State"
-                              {...register("state", {
+                              className="w-full bg-[#f2f2f2] p-2"
+                              placeholder="Nombre"
+                              {...register("nombre", {
                                 required: true,
+                                maxLength: 16,
                               })}
                             />
+                            {errors.nombre?.type === "required" && (
+                              <p className="text-red-600 font-medium">
+                                El nombre es obligatorio
+                              </p>
+                            )}
                           </div>
-                          <div>
-                            <label htmlFor="postcode">PostCode / ZIP</label>
+                          <div className="w-full">
+                            <label htmlFor="apellido" className="font-check">
+                              Apellido
+                            </label>
                             <input
                               type="text"
-                              className="block w-full bg-[#f2f2f2] p-2"
-                              id="postcode"
-                              placeholder="Code"
-                              {...register("postcode", {
+                              className="w-full bg-[#f2f2f2] p-2"
+                              id="apellido"
+                              placeholder="Apellido"
+                              {...register("apellido", {
                                 required: true,
+                                maxLength: 20,
                               })}
                             />
+                            {errors.apellido?.type === "required" && (
+                              <p className="text-red-600 font-medium">
+                                El apellido es obligatorio
+                              </p>
+                            )}
                           </div>
                         </div>
                         <div>
-                          <label htmlFor="informacion">
-                            Additional information
+                          <label htmlFor="email" className="font-check">
+                            Correo
                           </label>
-                          <textarea
-                            type="text"
+                          <input
+                            type="email"
                             className="block w-full bg-[#f2f2f2] p-2"
-                            id="informacion"
-                            placeholder="Maximo 30 caracteres"
-                            {...register("mensaje", {
-                              required: false,
-                              maxLength: 30,
+                            id="email"
+                            placeholder="Email"
+                            {...register("email", {
+                              required: true,
+                              pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i,
                             })}
                           />
-                          {errors.mensaje?.type === "maxLength" && (
+                          {errors.correo?.type === "pattern" && (
                             <p className="text-red-600 font-medium">
-                              Limite sobrepasado
+                              El correo no es valido
                             </p>
                           )}
                         </div>
-                      </>
-                    ) : (
-                      ""
-                    )}
-                    {delivery ? (
-                      <>
-                        <h2>Shipping</h2>
                         <div>
-                          <label htmlFor="direccionb">Direccion</label>
+                          <label htmlFor="telefono" className="font-check">
+                            Telefono
+                          </label>
                           <input
                             type="text"
                             className="block w-full bg-[#f2f2f2] p-2"
-                            id="direccionb"
+                            id="telefono"
+                            placeholder="Telefono"
+                            {...register("telefono", {
+                              required: true,
+                            })}
+                          />
+                          {errors.telefono?.type === "pattern" && (
+                            <p className="text-red-600 font-medium">
+                              El telefono no es valido
+                            </p>
+                          )}
+                        </div>
+
+                        <input
+                          type="submit"
+                          className="bg-black text-white font-bold w-full p-2 cursor-pointer rounded-md"
+                          value="Place Order"
+                          onClick={onOpenModal}
+                        />
+                      </form>
+                    </>
+                  ) : (
+                    " "
+                  )}
+                  {delivery ? (
+                    <>
+                      <div className="flex justify-between space-x-6 p-3 font-check mt-4">
+                        <h3 className="text-lg font-bold">DETAILS</h3>
+                        <div className="flex">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="_2DO-5SnSF_147bBb5qWMlX"
+                            viewBox="0 0 16 20"
+                            fill="none"
+                            width={20}
+                            aria-label="Location pin icon"
+                          >
+                            <title>Location pin icon</title>
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M8 0C3.5879 0 0 3.57642 0 7.99164C0 9.84522 0.64432 11.6412 1.82265 13.072L7.22807 19.6357C7.41803 19.8664 7.70119 20 8 20C8.29881 20 8.58197 19.8664 8.77193 19.6357L14.1773 13.072C15.3557 11.6412 16 9.84522 16 7.99164C16 3.57642 12.4121 0 8 0ZM6 8C6 6.89543 6.89543 6 8 6C9.10457 6 10 6.89543 10 8C10 9.10457 9.10457 10 8 10C6.89543 10 6 9.10457 6 8Z"
+                              fill="currentColor"
+                            />
+                          </svg>
+                          <div className="ml-4">
+                            <h4 className="text-base">
+                              Delivery - {"(45-60 min)"}
+                            </h4>
+                            <p className="text-sm">
+                              946 S Elmora Ave Elizabeth, NJ 07202
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <h3 className="p-3 font-check text-lg font-bold">
+                        CONTACT
+                      </h3>
+                      <form
+                        onSubmit={handleSubmit(onSubmit)}
+                        action=""
+                        className="space-y-4 px-3 py-2 w-full"
+                      >
+                        <div className="w-full flex space-x-6">
+                          <div className="w-full">
+                            <label className="font-check">Nombre</label>
+                            <input
+                              type="text"
+                              className="w-full bg-[#f2f2f2] p-2"
+                              placeholder="Nombre"
+                              {...register("nombre", {
+                                required: true,
+                                maxLength: 16,
+                              })}
+                            />
+                            {errors.nombre?.type === "required" && (
+                              <p className="text-red-600 font-medium">
+                                El nombre es obligatorio
+                              </p>
+                            )}
+                          </div>
+                          <div className="w-full">
+                            <label htmlFor="apellido" className="font-check">
+                              Apellido
+                            </label>
+                            <input
+                              type="text"
+                              className="w-full bg-[#f2f2f2] p-2"
+                              id="apellido"
+                              placeholder="Apellido"
+                              {...register("apellido", {
+                                required: true,
+                                maxLength: 20,
+                              })}
+                            />
+                            {errors.apellido?.type === "required" && (
+                              <p className="text-red-600 font-medium">
+                                El apellido es obligatorio
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                        <div>
+                          <label htmlFor="email" className="font-check">
+                            Correo
+                          </label>
+                          <input
+                            type="email"
+                            className="block w-full bg-[#f2f2f2] p-2"
+                            id="email"
+                            placeholder="Email"
+                            {...register("email", {
+                              required: true,
+                              pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i,
+                            })}
+                          />
+                          {errors.correo?.type === "pattern" && (
+                            <p className="text-red-600 font-medium">
+                              El correo no es valido
+                            </p>
+                          )}
+                        </div>
+                        <div>
+                          <label htmlFor="telefono" className="font-check">
+                            Telefono
+                          </label>
+                          <input
+                            type="text"
+                            className="block w-full bg-[#f2f2f2] p-2"
+                            id="telefono"
+                            placeholder="Telefono"
+                            {...register("telefono", {
+                              required: true,
+                            })}
+                          />
+                          {errors.telefono?.type === "pattern" && (
+                            <p className="text-red-600 font-medium">
+                              El telefono no es valido
+                            </p>
+                          )}
+                        </div>
+                        <div>
+                          <label htmlFor="direccion" className="font-check">
+                            Direccion
+                          </label>
+                          <input
+                            type="text"
+                            className="block w-full bg-[#f2f2f2] p-2"
+                            id="direccion"
                             placeholder="Direccion"
-                            {...register("direccionb", {
+                            {...register("direccion", {
                               required: true,
                             })}
                           />
                         </div>
-                        <div className="flex justify-between">
-                          <div>
-                            <label htmlFor="city">City</label>
-                            <input
-                              type="text"
-                              className="block w-full bg-[#f2f2f2] p-2"
-                              id="city"
-                              placeholder="City"
-                              {...register("city", {
-                                required: true,
-                              })}
-                            />
-                          </div>
-                          <div>
-                            <label htmlFor="state">State</label>
-                            <input
-                              type="text"
-                              className="block w-full bg-[#f2f2f2] p-2"
-                              id="state"
-                              placeholder="State"
-                              {...register("state", {
-                                required: true,
-                              })}
-                            />
-                          </div>
-                          <div>
-                            <label htmlFor="postcode">PostCode / ZIP</label>
-                            <input
-                              type="text"
-                              className="block w-full bg-[#f2f2f2] p-2"
-                              id="postcode"
-                              placeholder="Code"
-                              {...register("postcode", {
-                                required: true,
-                              })}
-                            />
-                          </div>
-                        </div>
                         <div>
-                          <label htmlFor="informacion">
-                            Additional information
+                          <label htmlFor="city" className="font-check">
+                            City
                           </label>
-                          <textarea
+                          <input
                             type="text"
                             className="block w-full bg-[#f2f2f2] p-2"
-                            id="informacion"
-                            placeholder="Maximo 30 caracteres"
-                            {...register("mensaje", {
-                              required: false,
-                              maxLength: 30,
+                            id="city"
+                            placeholder="City"
+                            {...register("city", {
+                              required: true,
                             })}
                           />
-                          {errors.mensaje?.type === "maxLength" && (
-                            <p className="text-red-600 font-medium">
-                              Limite sobrepasado
-                            </p>
-                          )}
                         </div>
-                      </>
-                    ) : (
-                      ""
-                    )}
+                        <div>
+                          <label htmlFor="state" className="font-check">
+                            State
+                          </label>
+                          <input
+                            type="text"
+                            className="block w-full bg-[#f2f2f2] p-2"
+                            id="state"
+                            placeholder="State"
+                            {...register("state", {
+                              required: true,
+                            })}
+                          />
+                        </div>
+                        <div>
+                          <label htmlFor="postcode" className="font-check">
+                            PostCode / ZIP
+                          </label>
+                          <input
+                            type="text"
+                            className="block w-full bg-[#f2f2f2] p-2"
+                            id="postcode"
+                            placeholder="Code"
+                            {...register("postcode", {
+                              required: true,
+                            })}
+                          />
+                        </div>
 
-                    <input
-                      type="submit"
-                      className="bg-black text-white font-bold w-full p-2 cursor-pointer rounded-md"
-                      value="Place Order"
-                      onClick={onOpenModal}
-                    />
-                  </form>
+                        <input
+                          type="submit"
+                          className="bg-black text-white font-bold w-full p-2 cursor-pointer rounded-md"
+                          value="Place Order"
+                          onClick={onOpenModal}
+                        />
+                      </form>
+                    </>
+                  ) : (
+                    " "
+                  )}
                 </div>
               )}
             </div>
             {pending ? (
               ""
             ) : (
-              <div className="w-full md:ml-7 flex flex-col px-3 md:px-0">
+              <div className="w-full md:ml-7 flex flex-col px-3 md:px-0 font-check">
                 <div className="order-2">
                   <div className="w-full px-1 py-4 rounded-md">
                     <h2 className="text-md mb-4 font-bold">
@@ -591,13 +679,13 @@ const Checkout = ({
                   </div>
                 </div>
 
-                <table className="w-full order-1 table-auto">
+                <table className="w-full order-1 table-auto font-check">
                   <thead>
                     <tr>
                       <th>Dish</th>
-                      <th>Producto</th>
-                      <th>Cantidad</th>
-                      <th>Precio</th>
+                      <th>Product</th>
+                      <th>Qty.</th>
+                      <th>Price</th>
                     </tr>
                   </thead>
                   <tbody>
