@@ -314,28 +314,27 @@ const Checkout = ({
               ) : (
                 <div className="w-full mb-[60px] md:mb-0">
                   <h2 className="text-2xl font-bold block px-3">Checkout</h2>
-                  <div className="flex justify-center items-center space-x-3">
+                  <div className=" mx-[150px] flex  justify-center items-center  rounded-3xl border-2 border-black">
                     <button
                       onClick={handlerPick}
                       className={`${
-                        delivery ? "disabled" : ""
-                      }bg-[#f2f2f2] px-6 py-3 rounded-md hover:scale-105 duration-200 font-check`}
+                        delivery ? "disabled" : "bg-black p-2 text-white"
+                      } px-6 py-3 w-1/2 rounded-2xl  0 font-check`}
                     >
                       Pickup
                     </button>
-                    <p>OR</p>
                     <button
                       onClick={handlerDelivery}
                       className={`${
-                        pickup ? "disabled" : ""
-                      } bg-[#f2f2f2] px-6 py-3 rounded-md hover:scale-105 duration-200 font-check`}
+                        pickup ? "disabled" : "bg-black p-2 text-white"
+                      }  px-6 py-3 w-1/2  rounded-2xl  font-check`}
                     >
                       Delivery
                     </button>
                   </div>
                   {pickup ? (
                     <>
-                      <div className="flex justify-between space-x-6 p-3 font-check mt-4">
+                      <div className="flex justify-between space-x-6 p-3 font-check mt-4 shadow-md shadow-gray-400">
                         <h3 className="text-lg font-bold">DETAILS</h3>
                         <div className="flex">
                           <svg
@@ -375,108 +374,109 @@ const Checkout = ({
                           </div>
                         </div>
                       </div>
-
-                      <h3 className="p-3 font-check text-lg font-bold">
-                        CONTACT
-                      </h3>
-                      <form
-                        onSubmit={handleSubmit(onSubmit)}
-                        action=""
-                        className="space-y-4 px-3 py-2 w-full"
-                      >
-                        <div className="w-full flex space-x-6">
-                          <div className="w-full">
-                            <label className="font-check">Nombre</label>
+                      <div className="shadow-md shadow-gray-400 mt-6">
+                        <h3 className="p-3 font-check text-lg font-bold">
+                          CONTACT
+                        </h3>
+                        <form
+                          onSubmit={handleSubmit(onSubmit)}
+                          action=""
+                          className="space-y-4 px-3 py-2 w-full"
+                        >
+                          <div className="w-full flex space-x-6">
+                            <div className="w-full">
+                              <label className="font-check">Nombre</label>
+                              <input
+                                type="text"
+                                className="w-full bg-[#f2f2f2] p-2"
+                                placeholder="Nombre"
+                                {...register("nombre", {
+                                  required: true,
+                                  maxLength: 16,
+                                })}
+                              />
+                              {errors.nombre?.type === "required" && (
+                                <p className="text-red-600 font-medium">
+                                  El nombre es obligatorio
+                                </p>
+                              )}
+                            </div>
+                            <div className="w-full">
+                              <label htmlFor="apellido" className="font-check">
+                                Apellido
+                              </label>
+                              <input
+                                type="text"
+                                className="w-full bg-[#f2f2f2] p-2"
+                                id="apellido"
+                                placeholder="Apellido"
+                                {...register("apellido", {
+                                  required: true,
+                                  maxLength: 20,
+                                })}
+                              />
+                              {errors.apellido?.type === "required" && (
+                                <p className="text-red-600 font-medium">
+                                  El apellido es obligatorio
+                                </p>
+                              )}
+                            </div>
+                          </div>
+                          <div>
+                            <label htmlFor="email" className="font-check">
+                              Correo
+                            </label>
                             <input
-                              type="text"
-                              className="w-full bg-[#f2f2f2] p-2"
-                              placeholder="Nombre"
-                              {...register("nombre", {
+                              type="email"
+                              className="block w-full bg-[#f2f2f2] p-2"
+                              id="email"
+                              placeholder="Email"
+                              {...register("email", {
                                 required: true,
-                                maxLength: 16,
+                                pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i,
                               })}
                             />
-                            {errors.nombre?.type === "required" && (
+                            {errors.correo?.type === "pattern" && (
                               <p className="text-red-600 font-medium">
-                                El nombre es obligatorio
+                                El correo no es valido
                               </p>
                             )}
                           </div>
-                          <div className="w-full">
-                            <label htmlFor="apellido" className="font-check">
-                              Apellido
+                          <div>
+                            <label htmlFor="telefono" className="font-check">
+                              Telefono
                             </label>
                             <input
                               type="text"
-                              className="w-full bg-[#f2f2f2] p-2"
-                              id="apellido"
-                              placeholder="Apellido"
-                              {...register("apellido", {
+                              className="block w-full bg-[#f2f2f2] p-2"
+                              id="telefono"
+                              placeholder="Telefono"
+                              {...register("telefono", {
                                 required: true,
-                                maxLength: 20,
                               })}
                             />
-                            {errors.apellido?.type === "required" && (
+                            {errors.telefono?.type === "pattern" && (
                               <p className="text-red-600 font-medium">
-                                El apellido es obligatorio
+                                El telefono no es valido
                               </p>
                             )}
                           </div>
-                        </div>
-                        <div>
-                          <label htmlFor="email" className="font-check">
-                            Correo
-                          </label>
-                          <input
-                            type="email"
-                            className="block w-full bg-[#f2f2f2] p-2"
-                            id="email"
-                            placeholder="Email"
-                            {...register("email", {
-                              required: true,
-                              pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i,
-                            })}
-                          />
-                          {errors.correo?.type === "pattern" && (
-                            <p className="text-red-600 font-medium">
-                              El correo no es valido
-                            </p>
-                          )}
-                        </div>
-                        <div>
-                          <label htmlFor="telefono" className="font-check">
-                            Telefono
-                          </label>
-                          <input
-                            type="text"
-                            className="block w-full bg-[#f2f2f2] p-2"
-                            id="telefono"
-                            placeholder="Telefono"
-                            {...register("telefono", {
-                              required: true,
-                            })}
-                          />
-                          {errors.telefono?.type === "pattern" && (
-                            <p className="text-red-600 font-medium">
-                              El telefono no es valido
-                            </p>
-                          )}
-                        </div>
 
-                        <input
-                          type="submit"
-                          className="bg-black text-white font-bold w-full p-2 cursor-pointer rounded-md"
-                          value="Place Order"
-                          onClick={onOpenModal}
-                        />
-                      </form>
+                          <input
+                            type="submit"
+                            className="bg-black text-white font-bold w-full p-2 cursor-pointer rounded-md"
+                            value="Place Order"
+                            onClick={onOpenModal}
+                          />
+                        </form>
+                      </div>
                     </>
                   ) : (
                     " "
                   )}
                   {delivery ? (
                     <>
-                      <div className="flex justify-between space-x-6 p-3 font-check mt-4">
+                      <div className="flex justify-between space-x-6 p-3 font-check mt-4 shadow-md shadow-gray-400">
                         <h3 className="text-lg font-bold">DETAILS</h3>
                         <div className="flex">
                           <svg
@@ -505,156 +505,158 @@ const Checkout = ({
                           </div>
                         </div>
                       </div>
-                      <h3 className="p-3 font-check text-lg font-bold">
-                        CONTACT
-                      </h3>
-                      <form
-                        onSubmit={handleSubmit(onSubmit)}
-                        action=""
-                        className="space-y-4 px-3 py-2 w-full"
-                      >
-                        <div className="w-full flex space-x-6">
-                          <div className="w-full">
-                            <label className="font-check">Nombre</label>
+                      <div className="shadow-md shadow-gray-400 mt-6">
+                        <h3 className="p-3 font-check text-lg font-bold">
+                          CONTACT
+                        </h3>
+                        <form
+                          onSubmit={handleSubmit(onSubmit)}
+                          action=""
+                          className="space-y-4 px-3 py-2 w-full"
+                        >
+                          <div className="w-full flex space-x-6">
+                            <div className="w-full">
+                              <label className="font-check">Nombre</label>
+                              <input
+                                type="text"
+                                className="w-full bg-[#f2f2f2] p-2"
+                                placeholder="Nombre"
+                                {...register("nombre", {
+                                  required: true,
+                                  maxLength: 16,
+                                })}
+                              />
+                              {errors.nombre?.type === "required" && (
+                                <p className="text-red-600 font-medium">
+                                  El nombre es obligatorio
+                                </p>
+                              )}
+                            </div>
+                            <div className="w-full">
+                              <label htmlFor="apellido" className="font-check">
+                                Apellido
+                              </label>
+                              <input
+                                type="text"
+                                className="w-full bg-[#f2f2f2] p-2"
+                                id="apellido"
+                                placeholder="Apellido"
+                                {...register("apellido", {
+                                  required: true,
+                                  maxLength: 20,
+                                })}
+                              />
+                              {errors.apellido?.type === "required" && (
+                                <p className="text-red-600 font-medium">
+                                  El apellido es obligatorio
+                                </p>
+                              )}
+                            </div>
+                          </div>
+                          <div>
+                            <label htmlFor="email" className="font-check">
+                              Correo
+                            </label>
                             <input
-                              type="text"
-                              className="w-full bg-[#f2f2f2] p-2"
-                              placeholder="Nombre"
-                              {...register("nombre", {
+                              type="email"
+                              className="block w-full bg-[#f2f2f2] p-2"
+                              id="email"
+                              placeholder="Email"
+                              {...register("email", {
                                 required: true,
-                                maxLength: 16,
+                                pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i,
                               })}
                             />
-                            {errors.nombre?.type === "required" && (
+                            {errors.correo?.type === "pattern" && (
                               <p className="text-red-600 font-medium">
-                                El nombre es obligatorio
+                                El correo no es valido
                               </p>
                             )}
                           </div>
-                          <div className="w-full">
-                            <label htmlFor="apellido" className="font-check">
-                              Apellido
+                          <div>
+                            <label htmlFor="telefono" className="font-check">
+                              Telefono
                             </label>
                             <input
                               type="text"
-                              className="w-full bg-[#f2f2f2] p-2"
-                              id="apellido"
-                              placeholder="Apellido"
-                              {...register("apellido", {
+                              className="block w-full bg-[#f2f2f2] p-2"
+                              id="telefono"
+                              placeholder="Telefono"
+                              {...register("telefono", {
                                 required: true,
-                                maxLength: 20,
                               })}
                             />
-                            {errors.apellido?.type === "required" && (
+                            {errors.telefono?.type === "pattern" && (
                               <p className="text-red-600 font-medium">
-                                El apellido es obligatorio
+                                El telefono no es valido
                               </p>
                             )}
                           </div>
-                        </div>
-                        <div>
-                          <label htmlFor="email" className="font-check">
-                            Correo
-                          </label>
-                          <input
-                            type="email"
-                            className="block w-full bg-[#f2f2f2] p-2"
-                            id="email"
-                            placeholder="Email"
-                            {...register("email", {
-                              required: true,
-                              pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i,
-                            })}
-                          />
-                          {errors.correo?.type === "pattern" && (
-                            <p className="text-red-600 font-medium">
-                              El correo no es valido
-                            </p>
-                          )}
-                        </div>
-                        <div>
-                          <label htmlFor="telefono" className="font-check">
-                            Telefono
-                          </label>
-                          <input
-                            type="text"
-                            className="block w-full bg-[#f2f2f2] p-2"
-                            id="telefono"
-                            placeholder="Telefono"
-                            {...register("telefono", {
-                              required: true,
-                            })}
-                          />
-                          {errors.telefono?.type === "pattern" && (
-                            <p className="text-red-600 font-medium">
-                              El telefono no es valido
-                            </p>
-                          )}
-                        </div>
-                        <div>
-                          <label htmlFor="direccion" className="font-check">
-                            Direccion
-                          </label>
-                          <input
-                            type="text"
-                            className="block w-full bg-[#f2f2f2] p-2"
-                            id="direccion"
-                            placeholder="Direccion"
-                            {...register("direccion", {
-                              required: true,
-                            })}
-                          />
-                        </div>
-                        <div>
-                          <label htmlFor="city" className="font-check">
-                            City
-                          </label>
-                          <input
-                            type="text"
-                            className="block w-full bg-[#f2f2f2] p-2"
-                            id="city"
-                            placeholder="City"
-                            {...register("city", {
-                              required: true,
-                            })}
-                          />
-                        </div>
-                        <div>
-                          <label htmlFor="state" className="font-check">
-                            State
-                          </label>
-                          <input
-                            type="text"
-                            className="block w-full bg-[#f2f2f2] p-2"
-                            id="state"
-                            placeholder="State"
-                            {...register("state", {
-                              required: true,
-                            })}
-                          />
-                        </div>
-                        <div>
-                          <label htmlFor="postcode" className="font-check">
-                            PostCode / ZIP
-                          </label>
-                          <input
-                            type="text"
-                            className="block w-full bg-[#f2f2f2] p-2"
-                            id="postcode"
-                            placeholder="Code"
-                            {...register("postcode", {
-                              required: true,
-                            })}
-                          />
-                        </div>
+                          <div>
+                            <label htmlFor="direccion" className="font-check">
+                              Direccion
+                            </label>
+                            <input
+                              type="text"
+                              className="block w-full bg-[#f2f2f2] p-2"
+                              id="direccion"
+                              placeholder="Direccion"
+                              {...register("direccion", {
+                                required: true,
+                              })}
+                            />
+                          </div>
+                          <div>
+                            <label htmlFor="city" className="font-check">
+                              City
+                            </label>
+                            <input
+                              type="text"
+                              className="block w-full bg-[#f2f2f2] p-2"
+                              id="city"
+                              placeholder="City"
+                              {...register("city", {
+                                required: true,
+                              })}
+                            />
+                          </div>
+                          <div>
+                            <label htmlFor="state" className="font-check">
+                              State
+                            </label>
+                            <input
+                              type="text"
+                              className="block w-full bg-[#f2f2f2] p-2"
+                              id="state"
+                              placeholder="State"
+                              {...register("state", {
+                                required: true,
+                              })}
+                            />
+                          </div>
+                          <div>
+                            <label htmlFor="postcode" className="font-check">
+                              PostCode / ZIP
+                            </label>
+                            <input
+                              type="text"
+                              className="block w-full bg-[#f2f2f2] p-2"
+                              id="postcode"
+                              placeholder="Code"
+                              {...register("postcode", {
+                                required: true,
+                              })}
+                            />
+                          </div>
 
-                        <input
-                          type="submit"
-                          className="bg-black text-white font-bold w-full p-2 cursor-pointer rounded-md"
-                          value="Place Order"
-                          onClick={onOpenModal}
-                        />
-                      </form>
+                          <input
+                            type="submit"
+                            className="bg-black text-white font-bold w-full p-2 cursor-pointer rounded-md"
+                            value="Place Order"
+                            onClick={onOpenModal}
+                          />
+                        </form>
+                      </div>
                     </>
                   ) : (
                     " "

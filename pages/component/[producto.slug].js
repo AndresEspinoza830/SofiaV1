@@ -199,19 +199,25 @@ const Producto = ({
       </div>
 
       <div className="max-w-[1320px] px-2 md:px-10 py-8 mx-auto flex w-full flex-wrap">
-        {productosCross.map((producto) => (
-          <div key={producto.id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
-            <div>
-              <Image
-                src={producto?.images[0]?.src ?? prueba.src}
-                width={100}
-                height={100}
-                alt={producto.name}
+        {productosCross.map((product) => (
+          <div key={product.id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
+            <form onSubmit={handleCarrito}>
+              <div>
+                <Image
+                  src={product?.images[0]?.src ?? prueba.src}
+                  width={100}
+                  height={100}
+                  alt={product.name}
+                />
+              </div>
+              <h2>{product.name}</h2>
+              <h3>{product.price}</h3>
+              <input
+                type="submit"
+                value="ADD TO CART"
+                className="cursor-pointer"
               />
-            </div>
-
-            <h2>{producto.name}</h2>
-            <button>ADD TO CART</button>
+            </form>
           </div>
         ))}
       </div>
