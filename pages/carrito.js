@@ -105,7 +105,7 @@ const Carrito = ({
               {carrito.length ? (
                 <button
                   type="button"
-                  className="bg-indigo-700 mt-3 md:mt-0 text-white py-3 px-10 rounded-md"
+                  className="bg-indigo-700 mt-3 md:mt-0 text-white py-3 w-full md:px-10 rounded-md"
                   onClick={handleEliminar}
                 >
                   Remove all

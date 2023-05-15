@@ -84,27 +84,25 @@ const Checkout = ({
     const {
       nombre,
       apellido,
-      direccion,
+      email,
       telefono,
+      direccion,
       city,
       state,
       postcode,
-      correo,
-      direccionb,
     } = data;
 
     const dataClover = [
       nombre,
       apellido,
-      direccion,
+      email,
       telefono,
+      direccion,
       city,
       state,
       postcode,
-      correo,
-      direccionb,
     ];
-
+    console.log(dataClover);
     const info = {
       payment_method: "bacs",
       payment_method_title: "Direct Bank Transfer",
@@ -118,14 +116,14 @@ const Checkout = ({
         state: state,
         postcode: postcode,
         country: "US",
-        email: correo,
+        email: email,
         phone: telefono,
       },
       shipping: {
         first_name: nombre,
         last_name: apellido,
-        address_1: direccionb,
-        address_2: direccionb,
+        address_1: direccion,
+        address_2: direccion,
         city: city,
         state: state,
         postcode: postcode,
@@ -167,7 +165,6 @@ const Checkout = ({
     const responseClover = await fetch("api/order-clover", optionsClover);
     const resulClover = await responseClover.json();
     const idOrder = resulClover.id;
-    console.log(idOrder);
 
     const optionsCustomer = {
       method: "POST",
@@ -186,7 +183,6 @@ const Checkout = ({
     );
     const resultCustomer = await responseCustomer.json();
     const idCustomer = resultCustomer.id;
-    console.log(idCustomer);
 
     //ACTUALIZAR CUSTOMER
     const actualizarCustomer = {
@@ -204,7 +200,6 @@ const Checkout = ({
       actualizarCustomer
     );
     const resultActualizarCustomer = await responseActualizarCustomer.json();
-    console.log(resultActualizarCustomer);
 
     //ACTUALIZAR ITEMS
     const ids = [idOrder, idCustomer];
@@ -225,7 +220,79 @@ const Checkout = ({
       actualizarItems
     );
     const resultActualizarItems = await responseActualizarItems.json();
-    console.log(resultActualizarItems);
+
+    //FETCH WORDPRESS...
+    const objCustomer = {
+      email: email,
+      first_name: nombre,
+      last_name: apellido,
+      username: nombre + "." + apellido,
+      billing: {
+        first_name: nombre,
+        last_name: apellido,
+        company: "",
+        address_1: direccion,
+        address_2: direccion,
+        city: city,
+        state: state,
+        postcode: postcode,
+        country: "US",
+        email: email,
+        phone: telefono,
+      },
+      shipping: {
+        first_name: nombre,
+        last_name: apellido,
+        company: "",
+        address_1: direccion,
+        address_2: direccion,
+        city: city,
+        state: state,
+        postcode: postcode,
+        country: "US",
+      },
+    };
+
+    const obj = {
+      email: "felipe.espinoza@example.com",
+      first_name: "Felipe",
+      last_name: "Espinoza",
+      username: "felipe.esp",
+      billing: {
+        first_name: "Felipe",
+        last_name: "DoEspinozae",
+        company: "",
+        address_1: "969 Market",
+        address_2: "",
+        city: "San Francisco",
+        state: "CA",
+        postcode: "94103",
+        country: "US",
+        email: "felipe.espinoza@example.com",
+        phone: "(555) 555-5555",
+      },
+      shipping: {
+        first_name: "Felipe",
+        last_name: "Espinoza",
+        company: "",
+        address_1: "969 Market",
+        address_2: "",
+        city: "San Francisco",
+        state: "CA",
+        postcode: "94103",
+        country: "US",
+      },
+    };
+
+    const customerWP = await fetch("api/create-customerwp", {
+      method: "POST",
+      body: JSON.stringify(objCustomer),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const resWP = await customerWP.json();
 
     const nuevoPedido = {
       carrito,

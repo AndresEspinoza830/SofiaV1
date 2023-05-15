@@ -21,6 +21,7 @@ const Producto = ({
   pedido,
 }) => {
   const [cantidad, setCantidad] = useState(1);
+  const [cross, setCross] = useState("");
 
   producto.map(
     (p) => (p.description = p.description.replace(/(<([^>]+)>)/gi, ""))
@@ -48,6 +49,27 @@ const Producto = ({
     };
 
     agregarCarrito(guitarraSeleccionada);
+
+    toast.success("Added to Cart");
+  };
+
+  const handleCarritoCross = (e) => {
+    e.preventDefault();
+
+    const selectProductCross = productosCross.filter((p) => p.id == cross);
+
+    console.log(selectProductCross);
+    const objetoCross = {
+      id: selectProductCross[0].id,
+      name: selectProductCross[0].name,
+      price: selectProductCross[0].regular_price,
+      image: selectProductCross[0]?.images[0]?.src ?? prueba,
+      cantidad: 1,
+      sku: selectProductCross[0].sku,
+    };
+
+    agregarCarrito(objetoCross);
+
     toast.success("Added to Cart");
   };
 
@@ -110,7 +132,7 @@ const Producto = ({
         pedido={pedido}
       />
       <div className="max-w-[1320px] px-2 md:px-10 py-8 mx-auto">
-        <div className="w-full md:mx-2">
+        <div className="w-full md:mx-2 px-2">
           <div>
             <Link href="/menu" className="flex items-center my-2">
               <svg
@@ -137,7 +159,6 @@ const Producto = ({
               <p className="font-philo text-xl text-[#555555] mb-5">
                 {product.description}
               </p>
-
               <div className="flex items-center mb-5">
                 <h3 className="font-philo font-bold text-xl mb-2">Quantity</h3>
                 <div className="flex flex-row h-10 rounded-lg relative bg-transparent ml-4">
@@ -188,8 +209,8 @@ const Producto = ({
             <div>
               <Image
                 alt="Placeholder"
-                width={400}
-                height={300}
+                width={600}
+                height={500}
                 className=""
                 src={product?.images[0]?.src ?? prueba.src}
               ></Image>
@@ -198,24 +219,29 @@ const Producto = ({
         </div>
       </div>
 
-      <div className="max-w-[1320px] px-2 md:px-10 py-8 mx-auto flex w-full flex-wrap">
+      <div className="max-w-[1320px] px-2 md:px-10 py-8 mx-auto flex w-full flex-wrap  space-y-3">
         {productosCross.map((product) => (
-          <div key={product.id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
-            <form onSubmit={handleCarrito}>
+          <div key={product.id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4  ">
+            <form onSubmit={handleCarritoCross}>
               <div>
                 <Image
                   src={product?.images[0]?.src ?? prueba.src}
-                  width={100}
-                  height={100}
+                  width={300}
+                  height={400}
                   alt={product.name}
                 />
               </div>
-              <h2>{product.name}</h2>
-              <h3>{product.price}</h3>
+              <h2 className="text-[#052617] text-xl font-extrabold font-philo">
+                {product.name}
+              </h2>
+              <h3 className="font-philo font-extrabold text-2xl  text-[#052617]">
+                ${product.price}
+              </h3>
               <input
                 type="submit"
+                onClick={() => setCross(product.id)}
                 value="ADD TO CART"
-                className="cursor-pointer"
+                className="bg-[#052617] hover:bg-[#0c5836] transition duration-500 hover:shadow-md text-[#D9BF73] w-full py-3 rounded-lg font-philo text-base font-bold text-center cursor-pointer"
               />
             </form>
           </div>

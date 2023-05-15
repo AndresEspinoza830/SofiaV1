@@ -16,9 +16,6 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
     setHamburguer(!hamburguer);
   };
 
-  console.log(pedido);
-  console.log(carrito);
-
   return (
     <div className="">
       <div
